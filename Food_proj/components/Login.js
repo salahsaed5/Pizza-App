@@ -8,10 +8,11 @@ export default function Login({ navigation }) {
 
 
     const { height } = useWindowDimensions();
+    const image =require("../assets/Signinwithoutbutton.png");
     return (
         <View style={styles.container}>
-            <ImageBackground resizeMode="cover" style={[styles.Background, { height: height * 0.35 }]}>
-                <Text>description</Text>
+            <ImageBackground source={image} style={[styles.Background, { height: height * 0.35 }]}>
+                
             </ImageBackground>
             <View style={styles.loginView}>
                 <View style={styles.inputView}>
@@ -38,6 +39,9 @@ export default function Login({ navigation }) {
                         <Text style={[styles.loginText, { color: "#4040fdaa" }]}>forgotten password</Text>
                     </TouchableOpacity>
                 </View>
+
+
+                
                 <View style={styles.BtnView}>
                     <TouchableOpacity style={styles.loginBtn}  >
                         <Text style={styles.loginText}>Login</Text>
@@ -57,6 +61,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     Background: {
+        
         justifyContent: 'flex-end',
         width: '100%',
     },
