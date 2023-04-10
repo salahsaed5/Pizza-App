@@ -37,8 +37,16 @@ return (
 
                 </View> }
                 
-                <CustomButton text="send link" onPress={handleForgetPassword}/>
-                <CustomButton text="back to sign in" type='Link'  onPress={hhandleForgetPassword}/>
+                <View style={styles.BtnView}>
+                        <TouchableOpacity style={styles.BotnView}  onPress={handleForgetPassword}>
+                            <Text style={styles.text}>Send Link</Text>
+                        </TouchableOpacity>
+                </View>
+                <View style={styles.BtnView}>
+                        <TouchableOpacity style={styles.BootnView} onPress={hhandleForgetPassword} >
+                            <Text style={styles.text}>Sign In</Text>
+                        </TouchableOpacity>
+                </View>
                 
             </ImageBackground>
         </View>
@@ -132,5 +140,40 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         marginLeft: 205,
         top: 30,
-      }, 
+      },
+          BotnView: {
+        padding: 10,
+        marginVertical: -80,
+        alignItems: "center",
+        backgroundColor: "green",
+        borderRadius: 17,
+        width: '30%',
+        paddingHorizontal: 15,
+        marginLeft: 90,
+        top: 30,
+          },
+          BootnView: {
+            padding: 10,
+            marginVertical: -100,
+            alignItems: "center",
+            backgroundColor: "gray",
+            borderRadius: 17,
+            width: '30%',
+            paddingHorizontal: 15,
+            marginLeft: 90,
+            top: 300,
+              },
+    
+          BtnView: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '90%',
+    },
+          text: {
+        fontWeight: "bold",
+        fontSize: 20,
+        Color: "black",
+    },
+
+ 
 })
