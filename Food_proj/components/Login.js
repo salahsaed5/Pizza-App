@@ -11,9 +11,9 @@ export default function Login({ navigation }) {
     const image =require("../assets/Signinwithoutbutton.png");
     return (
         <View style={styles.container}>
-            <ImageBackground source={image} style={[styles.Background, { height: height * 0.35 }]}>
+            <ImageBackground source={image} style={styles.Background}>
                 
-            </ImageBackground>
+           
             <View style={styles.loginView}>
                 <View style={styles.inputView}>
                     <TextInput
@@ -51,6 +51,7 @@ export default function Login({ navigation }) {
                     </TouchableOpacity>
                 </View>
             </View>
+            </ImageBackground>
         </View>
     );
 }
@@ -62,8 +63,11 @@ const styles = StyleSheet.create({
     },
     Background: {
         
-        justifyContent: 'flex-end',
+       justifyContent: 'center',
+       alignItems: 'flex-end',
+        height :'100%',
         width: '100%',
+       
     },
     loginView: {
         alignItems: 'center',
