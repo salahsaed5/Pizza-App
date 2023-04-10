@@ -53,7 +53,7 @@ export default function Login({ navigation }) {
                             </TouchableOpacity>
                         </View>
                         <View style={styles.CreateBtn}>
-                            <TouchableOpacity   >
+                            <TouchableOpacity  onPress={() => navigation.navigate('signup')} >
                                 <Text style={[styles.loginText, { color: "black" }]}>Create an account</Text>
                             </TouchableOpacity>
                         </View>

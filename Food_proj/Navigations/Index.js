@@ -7,6 +7,7 @@ import Login from '../components/Login';
 import GetStart from '../components/GetStart';
 import GetStart2 from '../components/GetStart2';
 import GetStart3 from '../components/GetStart3';
+import signup from '../components/signup'
 import ForgetPassword from '../components/ForgetPassword';
 
 const Stack = createNativeStackNavigator();
@@ -21,8 +22,9 @@ const Index = () => {
       <Stack.Screen name="GetStart" component={GetStart} />
       <Stack.Screen name="GetStart2" component={GetStart2} />
       <Stack.Screen name="GetStart3" component={GetStart3} />
-      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Login" component={Login} /> 
       <Stack.Screen name="ForgetPassword" component={ ForgetPassword } />
+      <Stack.Screen name="signup" component={signup} />
 
     </Stack.Navigator>
     </SafeAreaView>
