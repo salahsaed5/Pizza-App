@@ -3,22 +3,22 @@ import React from 'react'
 const GetStart = ({ navigation }) => {
 
   const image = require("../assets/GetStart.png");
-  const imagee =require("../assets/buttons/GetStartBTN.png");
+  const imagee = require("../assets/buttons/GetStartBTN.png");
 
 
   return (
     <View style={styles.container}>
-      <ImageBackground  source={image} style={styles.Background}>
+      <ImageBackground source={image} style={styles.Background}>
 
-      <TouchableOpacity  onPress={() => navigation.push('GetStart2')} >
-    <ImageBackground source={imagee} style={styles.btn}> 
-     
+        <TouchableOpacity onPress={() => navigation.push('GetStart2')} >
+          <ImageBackground source={imagee} style={styles.btn}>
+
+          </ImageBackground>
+
+        </TouchableOpacity>
+
       </ImageBackground>
-   
-   </TouchableOpacity>
-   
-      </ImageBackground>
-        
+
 
     </View>
 
@@ -41,14 +41,14 @@ const styles = StyleSheet.create({
 
   },
   btn: {
-    width : "80%",
-  // backgroundColor:Colors.primary ,
-    height:40,
-    justifyContent:"flex-end",
-    alignItems:"flex-end",
-    marginLeft: 90,
-    marginVertical: 650,
-    borderRadius :55 ,
-},
+    width: "80%",
+    // backgroundColor:Colors.primary ,
+    height: "20%",
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+    marginLeft: "19%",
+    marginVertical: "150%",
+    borderRadius: 55,
+  },
 
 });
