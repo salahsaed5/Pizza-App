@@ -4,7 +4,8 @@ import React from 'react';
 import Login from './components/Login';
 import GetStart from './components/GetStart';
 import GetStart2 from './components/GetStart2';
-import GetStart3 from "./components/GetStart3";
+import GetStart3 from './components/GetStart3';
+import ForgetPassword from "./components/ForgetPassword";
 import Index from './Navigations/Index' ;
 
 
