@@ -10,7 +10,6 @@ import GetStart3 from '../components/GetStart3';
 import signup from '../components/signup'
 import ForgetPassword from '../components/ForgetPassword';
 import Profaile from '../components/Profaile';
-
 const Stack = createNativeStackNavigator();
 
 

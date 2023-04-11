@@ -53,11 +53,7 @@ export default function ForgetPassword({ navigation }) {
                         <Text style={styles.text}>Send Link</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.BtnView}>
-                    <TouchableOpacity style={styles.BootnView} onPress={hhandleForgetPassword} >
-                        <Text style={styles.text}>Sign In</Text>
-                    </TouchableOpacity>
-                </View>
+                
 
             </ImageBackground>
         </View>
@@ -156,9 +152,10 @@ const styles = StyleSheet.create({
         padding: 10,
         marginVertical: -80,
         alignItems: "center",
-        backgroundColor: "green",
-        borderRadius: 17,
-        width: '30%',
+        backgroundColor: "#ff8a00",
+        borderRadius: 30,
+        width: '60%',
+        color:"white",
         paddingHorizontal: 15,
         marginLeft: 90,
         top: 30,
@@ -183,7 +180,7 @@ const styles = StyleSheet.create({
     text: {
         fontWeight: "bold",
         fontSize: 20,
-        Color: "black",
+        color: "white",
     },
 
 

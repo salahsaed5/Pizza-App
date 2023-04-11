@@ -59,7 +59,7 @@ export default function Login({ navigation }) {
                             style={styles.TextInput}
                             placeholder="Email"
                             value={email}
-                            placeholderTextColor="#ababab55"
+                            placeholderTextColor="#95908a"
                             onChangeText={(email) => setEmail(email)}
                         />
                     </View>
@@ -68,7 +68,7 @@ export default function Login({ navigation }) {
                             style={[styles.TextInput, { color: "black" }]}
                             placeholder="Password"
                             value={password}
-                            placeholderTextColor="#ababab55"
+                            placeholderTextColor="#95908a"
                             secureTextEntry={true}
                             onChangeText={(password) => setPassword(password)}
                         />
@@ -87,7 +87,7 @@ export default function Login({ navigation }) {
                         </TouchableOpacity>
                         <View style={styles.GoogleView}>
                             <TouchableOpacity style={styles.FacebookBtn}  >
-                                <Text style={styles.loginText}>Facebook</Text>
+                                <Text style={styles.loginText}> Facebook</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.GoogleBtn} onPress={hundelgoogle}>
                                 <Text style={styles.loginText}>Google</Text>
@@ -95,7 +95,7 @@ export default function Login({ navigation }) {
                         </View>
                         <View style={styles.CreateBtn}>
                             <TouchableOpacity onPress={() => navigation.navigate('signup')} >
-                                <Text style={[styles.loginText, { color: "black" }]}>Create an account</Text>
+                                <Text style={[styles.loginText, { color: "#ED7014" }]}>Create an account</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
         height: "13%",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#ED7014",
+        backgroundColor: "#ff8a00",
     },
     FacebookBtn: {
         width: "100%",
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
         height: "50%",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "blue",
+        backgroundColor: "#3c5a99",
     },
     GoogleBtn: {
         width: "100%",
@@ -191,16 +191,17 @@ const styles = StyleSheet.create({
         height: "50%",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "red",
+        backgroundColor: "#f95341",
     },
     CreateBtn: {
-        marginLeft: "50%",
-        marginTop: "10%",
+        marginLeft: "45%",
+        marginVertical: "-0.7%",
         
     },
     loginText: {
         color: 'white',
-        marginHorizontal:"10%",
+      //  marginHorizontal:"10%",
     },
+  
 });
 

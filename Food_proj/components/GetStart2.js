@@ -8,6 +8,14 @@ const GetStart2 = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground source={image} style={styles.Background}>
+        
+      <View style={styles.btnn}>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')} >
+            <Text style={[styles.logginText, { color: "#ED7014" }]}>Skip </Text>
+          </TouchableOpacity></View>     
+       
+        
+        
         <TouchableOpacity onPress={() => navigation.push('GetStart3')} >
           <ImageBackground source={imagee} style={styles.btn}>
 
@@ -45,9 +53,20 @@ const styles = StyleSheet.create({
     marginLeft: "19%",
     marginVertical: "150%",
     borderRadius: 55,
+    top:-40,
   },
 
 
+  btnn: {
+    marginLeft: "88%",
+    marginVertical: "2%",
+
+  },
+  logginText: {
+    fontWeight:"bold",
+    color: 'black',
+    //  marginHorizontal:"10%",
+  },
 });
 
 export default GetStart2

@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
         width: "80%",
         marginTop: '10%',
         marginBottom: '8%',
+        marginLeft:"10%",
         borderRadius: 10,
         height: '5%',
         alignItems: "center",
@@ -64,6 +65,7 @@ const styles = StyleSheet.create({
 
     loginText: {
         marginTop: '20%',
+        marginLeft:"25%",
         color: 'black',
         fontWeight: 'bold',
         fontSize:24,

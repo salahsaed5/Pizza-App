@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, useWindowDimensions } from 'react-native';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-
+import {auth , provider } from "../firebase/firebase";
 
 export default function Login({ navigation }) {
     const [email, setEmail] = useState('');
@@ -18,7 +18,7 @@ export default function Login({ navigation }) {
                 // Signed in 
                 const user = userCredential.user;
                 alert('SignUp done');
-                navigation.navigate('profaile');
+                navigation.navigate('Profaile');
 
                 // ...
             })
