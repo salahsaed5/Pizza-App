@@ -1,11 +1,49 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, useWindowDimensions } from 'react-native';
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../firebase/firebase";
 
 
 export default function Login({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const hundlelogin = () => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                // navigation.navigate('Home');
+                alert('Login done');
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert('Not valid email or password');
+            });
+    }
+    function hundelgoogle() {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                // const credential = GoogleAuthProvider.credentialFromResult(result);
+                // const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                // IdP data available using getAdditionalUserInfo(result)
+                // ...
+                alert(user.displayName);
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+            });
+
+    }
 
     const { height } = useWindowDimensions();
     const image = require("../assets/Signinwithoutbutton.png");
@@ -41,19 +79,19 @@ export default function Login({ navigation }) {
 
 
                     <View style={styles.BtnView}>
-                        <TouchableOpacity style={styles.loginBtn}  >
+                        <TouchableOpacity style={styles.loginBtn} onPress={hundlelogin} >
                             <Text style={styles.loginText}>Login</Text>
                         </TouchableOpacity>
                         <View style={styles.GoogleView}>
                             <TouchableOpacity style={styles.FacebookBtn}  >
                                 <Text style={styles.loginText}>Facebook</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.GoogleBtn}  >
+                            <TouchableOpacity style={styles.GoogleBtn} onPress={hundelgoogle}>
                                 <Text style={styles.loginText}>Google</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.CreateBtn}>
-                            <TouchableOpacity  onPress={() => navigation.navigate('signup')} >
+                            <TouchableOpacity onPress={() => navigation.navigate('signup')} >
                                 <Text style={[styles.loginText, { color: "black" }]}>Create an account</Text>
                             </TouchableOpacity>
                         </View>

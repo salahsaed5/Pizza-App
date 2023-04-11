@@ -1,53 +1,64 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, useWindowDimensions, Button } from 'react-native';
-import { SafeAreaView } from 'react-native';
-import CustomButton from '../compo/CustomButton';
-import Custominput from '../compo/CustomButton';
 import ForgotPassword from '../assets/ForgetPassword.png';
+import { sendPasswordResetEmail } from "firebase/auth";
+import { auth } from '../firebase/firebase';
 
 export default function ForgetPassword({ navigation }) {
 
-const [Email,setEmail]=useState('');
-const handleForgetPassword= ()=>{
-    console.log("done")
-};
-const hhandleForgetPassword= ()=>{
-    console.log("done")
-    navigation.navigate('Login');
+    const [Email, setEmail] = useState('');
+    const handleForgetPassword = () => {
+        sendPasswordResetEmail(auth, Email)
+            .then(() => {
+                // Password reset email sent!
+                // ..
+                alert("reset Password sent!")
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+                alert("Wrong!")
+            });
 
-};
+    };
+    const hhandleForgetPassword = () => {
+        console.log("done")
+        navigation.navigate('Login');
+
+    };
 
 
 
-return (
+    return (
 
         <View style={styles.container}>
 
             <ImageBackground source={ForgotPassword} style={[{ width: '134%', height: '128%' }]}>
                 {<View style={styles.inputView}>
-                  <TextInput
-                            style={styles.TextInput}
-                            placeholder="Email"
-                            value={Email}
-                            placeholderTextColor="#ababab55"
-                            onChangeText={(Email) => setEmail(Email)}
-                        />
-  
+                    <TextInput
+                        style={styles.TextInput}
+                        placeholder="Email"
+                        value={Email}
+                        placeholderTextColor="#ababab55"
+                        onChangeText={(Email) => setEmail(Email)}
+                    />
 
-                </View> }
-                
+
+                </View>}
+
                 <View style={styles.BtnView}>
-                        <TouchableOpacity style={styles.BotnView}  onPress={handleForgetPassword}>
-                            <Text style={styles.text}>Send Link</Text>
-                        </TouchableOpacity>
+                    <TouchableOpacity style={styles.BotnView} onPress={handleForgetPassword}>
+                        <Text style={styles.text}>Send Link</Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.BtnView}>
-                        <TouchableOpacity style={styles.BootnView} onPress={hhandleForgetPassword} >
-                            <Text style={styles.text}>Sign In</Text>
-                        </TouchableOpacity>
+                    <TouchableOpacity style={styles.BootnView} onPress={hhandleForgetPassword} >
+                        <Text style={styles.text}>Sign In</Text>
+                    </TouchableOpacity>
                 </View>
-                
+
             </ImageBackground>
         </View>
     );
@@ -130,7 +141,7 @@ const styles = StyleSheet.create({
         marginLeft: 100,
         paddingLeft: 125,
     },
-    btn:{
+    btn: {
         padding: 20,
         marginVertical: -80,
         alignItems: "center",
@@ -140,8 +151,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         marginLeft: 205,
         top: 30,
-      },
-          BotnView: {
+    },
+    BotnView: {
         padding: 10,
         marginVertical: -80,
         alignItems: "center",
@@ -151,29 +162,29 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         marginLeft: 90,
         top: 30,
-          },
-          BootnView: {
-            padding: 10,
-            marginVertical: -100,
-            alignItems: "center",
-            backgroundColor: "gray",
-            borderRadius: 17,
-            width: '30%',
-            paddingHorizontal: 15,
-            marginLeft: 90,
-            top: 300,
-              },
-    
-          BtnView: {
+    },
+    BootnView: {
+        padding: 10,
+        marginVertical: -100,
+        alignItems: "center",
+        backgroundColor: "gray",
+        borderRadius: 17,
+        width: '30%',
+        paddingHorizontal: 15,
+        marginLeft: 90,
+        top: 300,
+    },
+
+    BtnView: {
         flexDirection: 'column',
         alignItems: 'center',
         width: '90%',
     },
-          text: {
+    text: {
         fontWeight: "bold",
         fontSize: 20,
         Color: "black",
     },
 
- 
+
 })
