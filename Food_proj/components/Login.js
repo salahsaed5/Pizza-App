@@ -14,7 +14,7 @@ export default function Login({ navigation }) {
                 const user = userCredential.user;
                 // navigation.navigate('Home');
                 alert('Login done');
-                navigation.navigate('profaile');
+                navigation.navigate('Profaile');
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -194,12 +194,13 @@ const styles = StyleSheet.create({
         backgroundColor: "red",
     },
     CreateBtn: {
-        marginTop: "1.5%",
+        marginLeft: "50%",
+        marginTop: "10%",
+        
     },
     loginText: {
         color: 'white',
-        fontWeight: 'bold',
-
+        marginHorizontal:"10%",
     },
 });
 

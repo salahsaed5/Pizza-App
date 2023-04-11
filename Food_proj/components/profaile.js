@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import { auth, provider } from "../firebase/firebase";
 
-export default function profaile({ navigation }) {
+export default function Profaile({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const image = require("../assets/Myprofile without Buttons.png");
