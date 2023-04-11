@@ -14,6 +14,7 @@ export default function Login({ navigation }) {
                 const user = userCredential.user;
                 // navigation.navigate('Home');
                 alert('Login done');
+                navigation.navigate('profaile');
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -32,6 +33,8 @@ export default function Login({ navigation }) {
                 // IdP data available using getAdditionalUserInfo(result)
                 // ...
                 alert(user.displayName);
+                
+                navigation.navigate('profaile');
             }).catch((error) => {
                 // Handle Errors here.
                 const errorCode = error.code;

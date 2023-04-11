@@ -9,6 +9,7 @@ import GetStart2 from '../components/GetStart2';
 import GetStart3 from '../components/GetStart3';
 import signup from '../components/signup'
 import ForgetPassword from '../components/ForgetPassword';
+import profaile from '../components/profaile';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +26,8 @@ const Index = () => {
       <Stack.Screen name="Login" component={Login} /> 
       <Stack.Screen name="ForgetPassword" component={ ForgetPassword } />
       <Stack.Screen name="signup" component={signup} />
+      <Stack.Screen name="profaile" component={profaile} />
+
 
     </Stack.Navigator>
     </SafeAreaView>
