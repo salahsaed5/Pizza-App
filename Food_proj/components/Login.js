@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, useWindowDimensions } from 'react-native';
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../firebase/firebase";
-
+import { auth , provider , providerr } from "../firebase/firebase";
+import { signInWithEmailAndPassword, signInWithPopup,GoogleAuthProvider,FacebookAuthProvider } from "firebase/auth";
 
 export default function Login({ navigation }) {
+
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    const hundlelogin = () => {
+        const hundlelogin = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
@@ -22,31 +22,57 @@ export default function Login({ navigation }) {
                 alert('Not valid email or password');
             });
     }
-    function hundelgoogle() {
+    const hundelgoogle = () => {
         signInWithPopup(auth, provider)
-            .then((result) => {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                // const credential = GoogleAuthProvider.credentialFromResult(result);
-                // const token = credential.accessToken;
-                // The signed-in user info.
-                const user = result.user;
-                // IdP data available using getAdditionalUserInfo(result)
-                // ...
-                alert(user.displayName);
-                
-                navigation.navigate('profaile');
-            }).catch((error) => {
-                // Handle Errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // The email of the user's account used.
-                const email = error.customData.email;
-                // The AuthCredential type that was used.
-                const credential = GoogleAuthProvider.credentialFromError(error);
-                // ...
-            });
+        .then((result) => {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+          // The signed-in user info.
+          const user = result.user;
+          console.log(user.email)
+          console.log(user.displayName)
 
+          navigation.navigate('Profaile');      
+          // IdP data available using getAdditionalUserInfo(result)
+          // ...
+        }).catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          const email = error.customData.email;
+          // The AuthCredential type that was used.
+          const credential = GoogleAuthProvider.credentialFromError(error);
+          // ...
+        }); 
     }
+    const hundlefacebook = () => {
+        
+signInWithPopup(auth, providerr)
+  .then((result) => {
+    // The signed-in user info.
+    const user = result.user;
+
+    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+    const credential = FacebookAuthProvider.credentialFromResult(result);
+    const accessToken = credential.accessToken;
+
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = FacebookAuthProvider.credentialFromError(error);
+
+    // ...
+          }); 
+    };
 
     const { height } = useWindowDimensions();
     const image = require("../assets/Signinwithoutbutton.png");
@@ -86,7 +112,7 @@ export default function Login({ navigation }) {
                             <Text style={styles.loginText}>Login</Text>
                         </TouchableOpacity>
                         <View style={styles.GoogleView}>
-                            <TouchableOpacity style={styles.FacebookBtn}  >
+                            <TouchableOpacity style={styles.FacebookBtn}  onPress={hundlefacebook}>
                                 <Text style={styles.loginText}> Facebook</Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.GoogleBtn} onPress={hundelgoogle}>
