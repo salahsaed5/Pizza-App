@@ -61,7 +61,7 @@ return(
         <Text>{user.lastname}</Text>
         <Text>{user.birthdate}</Text>
         <Text>{user.phone}</Text>
-        <Image source={{ uri:user.photo }} style={{ width: 200, height: 200 }} />
+        <Image source={{ uri:user.photo }} style={styles.iimger} />
         
       </View>
       
@@ -121,4 +121,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
 
     },
+    iimger: {
+      borderRadius:100,
+      height:100,
+      width:100,
+
+  },
 });

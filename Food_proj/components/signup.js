@@ -68,7 +68,7 @@ export default function Login({ navigation }) {
                 // Signed in 
                 const user = userCredential.user;
                 alert('SignUp done');
-                navigation.navigate('Profaile');
+                navigation.navigate('Home');
                 add();
 
                 // ...

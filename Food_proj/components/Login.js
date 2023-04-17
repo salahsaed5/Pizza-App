@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, u
 import { auth , provider , providerr } from "../firebase/firebase";
 import { signInWithEmailAndPassword, signInWithPopup,GoogleAuthProvider,FacebookAuthProvider } from "firebase/auth";
 
-
 export default function Login({ navigation }) {
 
 
@@ -15,7 +14,7 @@ export default function Login({ navigation }) {
                 const user = userCredential.user;
                 // navigation.navigate('Home');
                 alert('Login done');
-                navigation.navigate('Profaile');
+                navigation.navigate('Home');
             })
             .catch((error) => {
                 const errorCode = error.code;
