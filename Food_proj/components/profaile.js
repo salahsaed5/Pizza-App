@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, useWindowDimensions } from 'react-native';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signOut } from "firebase/auth";
-import { auth, provider } from "../firebase/firebase";
+import {auth , provider,db } from "../firebase/firebase";
+import * as ImagePicker from 'expo-image-picker';
+import { collection, addDoc,and, onSnapshot} from "firebase/firestore";  
+import { doc, setDoc,getDoc,updateDoc,deleteDoc,getDocs} from "firebase/firestore"; 
 
 export default function Profaile({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [firstname, setName] = useState('');
+    const [lastname, setlastName] = useState('');
+    const [phone, setphone] = useState('');
+    const [birthdate, setbrithdate] = useState('');
+    const [photo, setphoto] = useState(null);
+    const[users,setusers] = useState([]);
     const image = require("../assets/Myprofile without Buttons.png");
     const handelsignout =() => {
   
@@ -20,10 +29,39 @@ export default function Profaile({ navigation }) {
             
           }
 
+          //find data
+      const findData=async () => {
+        const docRef = doc(db, "users", auth.currentUser.uid);
+  const docSnap = await getDoc(docRef);
+  let data = [];
+  if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data());
+    data.push({
+        ...docSnap.data()
+      });
+      setusers(data)
+  } else {
+    // docSnap.data() will be undefined in this case
+    console.log("No such document!");
+  }
+      }
+      useEffect(() => {
+        findData();
+      },[]);
+
 return(
     <View style={styles.container}>
     <ImageBackground source={image} style={styles.Background}>
-        <Text style={styles.loginText}>{auth.currentUser.email}</Text>
+    {users.map((user) => (
+      <View  key={user.birthdate}>
+        <Text>{user.firstname}</Text>
+        <Text>{user.lastname}</Text>
+        <Text>{user.birthdate}</Text>
+        <Text>{user.phone}</Text>
+        
+      </View>
+      
+    ))}
         <TouchableOpacity style={styles.loginBtn} onPress={handelsignout} >
                             <Text style={styles.loginText2}>logout</Text>
                         </TouchableOpacity>

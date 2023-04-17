@@ -1,8 +1,10 @@
 import React, { useState,useEffect } from "react";
 import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, useWindowDimensions,Image } from 'react-native';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import {auth , provider } from "../firebase/firebase";
+import {auth , provider,db } from "../firebase/firebase";
 import * as ImagePicker from 'expo-image-picker';
+import { collection, addDoc,and, onSnapshot} from "firebase/firestore";  
+import { doc, setDoc,getDoc,updateDoc,deleteDoc,getDocs} from "firebase/firestore"; 
 
 export default function Login({ navigation }) {
     const [email, setEmail] = useState('');
@@ -12,6 +14,7 @@ export default function Login({ navigation }) {
     const [phone, setphone] = useState('');
     const [birthdate, setbrithdate] = useState('');
     const [photo, setphoto] = useState(null);
+    const[users,setusers] = useState({});
 
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
@@ -37,6 +40,18 @@ export default function Login({ navigation }) {
           setphoto(null);
         }
       },[]);
+      //add data to firestore
+      const add =async()=>{
+        await setDoc(doc(db, "users", auth.currentUser.uid), {
+          email: email,
+          password: password,
+          lastname:lastname ,
+          firstname:firstname,
+          phone:phone,
+          birthdate:birthdate
+         
+        });
+        }
       
 
     const hundleregeister = () => {
@@ -46,6 +61,7 @@ export default function Login({ navigation }) {
                 const user = userCredential.user;
                 alert('SignUp done');
                 navigation.navigate('Profaile');
+                add();
 
                 // ...
             })
@@ -109,6 +125,16 @@ export default function Login({ navigation }) {
                             onChangeText={(birthdate) => setbrithdate(birthdate)}
                         />
                     </View>
+                    <View style={styles.inputView2}>
+                    <TextInput
+                            style={styles.TextInput}
+                            placeholder="phone"
+                            value={phone}
+                            placeholderTextColor="#ababab55"
+                            onChangeText={(phone) => setphone(phone)}
+                        
+                        />
+                        </View>
                     {photo && <Image source={{ uri: photo }} style={{ width: '15%', height: '15%' }} />}
                     
 
