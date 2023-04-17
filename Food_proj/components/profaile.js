@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, useWindowDimensions } from 'react-native';
+import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, useWindowDimensions,Image } from 'react-native';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import {auth , provider,db } from "../firebase/firebase";
@@ -58,6 +58,7 @@ return(
         <Text>{user.lastname}</Text>
         <Text>{user.birthdate}</Text>
         <Text>{user.phone}</Text>
+        <Image source={{ uri:user.photo }} style={{ width: 200, height: 200 }} />
         
       </View>
       

@@ -1,10 +1,11 @@
 import React, { useState,useEffect } from "react";
 import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, useWindowDimensions,Image } from 'react-native';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import {auth , provider,db } from "../firebase/firebase";
+import {auth , provider,db,storag,firebase } from "../firebase/firebase";
 import * as ImagePicker from 'expo-image-picker';
 import { collection, addDoc,and, onSnapshot} from "firebase/firestore";  
 import { doc, setDoc,getDoc,updateDoc,deleteDoc,getDocs} from "firebase/firestore"; 
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 export default function Login({ navigation }) {
     const [email, setEmail] = useState('');
@@ -16,30 +17,36 @@ export default function Login({ navigation }) {
     const [photo, setphoto] = useState(null);
     const[users,setusers] = useState({});
 
+
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
-        let result = await ImagePicker.launchImageLibraryAsync({
-          mediaTypes: ImagePicker.MediaTypeOptions.All,
-          allowsEditing: true,
-          aspect: [4, 3],
-          quality: 1,
-        });
-      
+        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== 'granted') {
+            console.log('permission to access media library is required')
+            return;
+        }
+        const result = await ImagePicker.launchImageLibraryAsync();
         console.log(result);
-      
         if (!result.canceled) {
-          setphoto(result.assets[0].uri);
+            return result.uri;
         }
       };
-      useEffect(() => {
+      const updatePhoto = async () => {
+        const uri = await pickImage();
+      console.log(uri);
+      const filename = firstname;
+      const ref = firebase.storage().ref().child("images/" + filename);
       
-
+      const response = await fetch(uri);
+      const blob = await response.blob();
       
-        if(photo!=null){
-          
-          setphoto(null);
-        }
-      },[]);
+      const snapshot = await ref.put(blob);
+      console.log('Image uploaded successfully');
+      
+      const downloadURL = await snapshot.ref.getDownloadURL();
+      setphoto(downloadURL);
+      
+      }
       //add data to firestore
       const add =async()=>{
         await setDoc(doc(db, "users", auth.currentUser.uid), {
@@ -48,7 +55,8 @@ export default function Login({ navigation }) {
           lastname:lastname ,
           firstname:firstname,
           phone:phone,
-          birthdate:birthdate
+          birthdate:birthdate,
+          photo:photo
          
         });
         }
@@ -138,7 +146,7 @@ export default function Login({ navigation }) {
                     {photo && <Image source={{ uri: photo }} style={{ width: '15%', height: '15%' }} />}
                     
 
-                    <TouchableOpacity style={styles.photoBtn} onPress={pickImage}>
+                    <TouchableOpacity style={styles.photoBtn} onPress={updatePhoto}>
                         <Text style={styles.loginText}>set photo</Text>
                     </TouchableOpacity>
                     
