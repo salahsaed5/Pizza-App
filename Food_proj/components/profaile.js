@@ -48,6 +48,9 @@ export default function Profaile({ navigation }) {
       useEffect(() => {
         findData();
       },[]);
+    const  handelUpdate=() => {
+      navigation.navigate("UpdateProfile")
+      }
 
 return(
     <View style={styles.container}>
@@ -65,7 +68,10 @@ return(
     ))}
         <TouchableOpacity style={styles.loginBtn} onPress={handelsignout} >
                             <Text style={styles.loginText2}>logout</Text>
-                        </TouchableOpacity>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.loginBtn} onPress={handelUpdate} >
+                            <Text style={styles.loginText2}>UpdateProfile</Text>
+        </TouchableOpacity>
     </ImageBackground>
 
 </View>
