@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, useWindowDimensions } from 'react-native';
+import React, { useState,useEffect } from "react";
+import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, useWindowDimensions,Image } from 'react-native';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import {auth , provider } from "../firebase/firebase";
+import * as ImagePicker from 'expo-image-picker';
 
 export default function Login({ navigation }) {
     const [email, setEmail] = useState('');
@@ -10,7 +11,33 @@ export default function Login({ navigation }) {
     const [lastname, setlastName] = useState('');
     const [phone, setphone] = useState('');
     const [birthdate, setbrithdate] = useState('');
-    const [photo, setphoto] = useState('');
+    const [photo, setphoto] = useState(null);
+
+    const pickImage = async () => {
+        // No permissions request is necessary for launching the image library
+        let result = await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.All,
+          allowsEditing: true,
+          aspect: [4, 3],
+          quality: 1,
+        });
+      
+        console.log(result);
+      
+        if (!result.canceled) {
+          setphoto(result.assets[0].uri);
+        }
+      };
+      useEffect(() => {
+      
+
+      
+        if(photo!=null){
+          
+          setphoto(null);
+        }
+      },[]);
+      
 
     const hundleregeister = () => {
         createUserWithEmailAndPassword(auth, email, password)
@@ -82,15 +109,15 @@ export default function Login({ navigation }) {
                             onChangeText={(birthdate) => setbrithdate(birthdate)}
                         />
                     </View>
-                    <View style={styles.inputView2}>
-                        <TextInput
-                            style={[styles.TextInput, { color: "black" }]}
-                            placeholder="photo"
-                            value={photo}
-                            placeholderTextColor="#ababab55"
-                            onChangeText={(photo) => setphoto(photo)}
-                        />
-                    </View>
+                    {photo && <Image source={{ uri: photo }} style={{ width: '15%', height: '15%' }} />}
+                    
+
+                    <TouchableOpacity style={styles.photoBtn} onPress={pickImage}>
+                        <Text style={styles.loginText}>set photo</Text>
+                    </TouchableOpacity>
+                    
+
+                    
 
                     <TouchableOpacity style={styles.loginBtn} onPress={hundleregeister}   >
                         <Text style={styles.loginText}>submit</Text>
@@ -148,6 +175,15 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         height: '5%',
         alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#ED7014",
+    },
+    photoBtn: {
+        width: "15%",
+        marginTop: '5%',
+        borderRadius: 10,
+        height: '5%',
+         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#ED7014",
     },

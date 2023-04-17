@@ -9,7 +9,7 @@ import GetStart2 from '../components/GetStart2';
 import GetStart3 from '../components/GetStart3';
 import signup from '../components/signup'
 import ForgetPassword from '../components/ForgetPassword';
-import Profaile from '../components/Profaile';
+import Profaile from '../components/profaile'
 const Stack = createNativeStackNavigator();
 
 
