@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, useWindowDimensions,Image } from 'react-native';
+import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, useWindowDimensions,Image,ScrollView } from 'react-native';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import {auth , provider,db,storag,firebase } from "../firebase/firebase";
 import * as ImagePicker from 'expo-image-picker';
@@ -34,7 +34,7 @@ export default function Login({ navigation }) {
       const updatePhoto = async () => {
         const uri = await pickImage();
       console.log(uri);
-      const filename = firstname;
+      const filename = email;
       const ref = firebase.storage().ref().child("images/" + filename);
       
       const response = await fetch(uri);
@@ -48,19 +48,63 @@ export default function Login({ navigation }) {
       
       }
       //add data to firestore
-      const add =async()=>{
-        await setDoc(doc(db, "users", auth.currentUser.uid), {
-          email: email,
-          password: password,
-          lastname:lastname ,
-          firstname:firstname,
-          phone:phone,
-          birthdate:birthdate,
-          photo:photo
-         
-        });
-        }
+      const updatefristname= async() => {
+        const washingtonRef = doc(db, "cities",auth.currentUser.uid);
       
+      // Set the "capital" field of the city 'DC'
+      await updateDoc(washingtonRef, {
+       firstname:firstname,   
+      });
+       }
+       const updatelastname= async() => {
+        const washingtonRef = doc(db, "cities",auth.currentUser.uid);
+      
+      // Set the "capital" field of the city 'DC'
+      await updateDoc(washingtonRef, {
+       lastname:lastname,   
+      });
+       }
+       const updatephone= async() => {
+        const washingtonRef = doc(db, "cities",auth.currentUser.uid);
+      
+      // Set the "capital" field of the city 'DC'
+      await updateDoc(washingtonRef, {
+       phone:phone,   
+      });
+       }
+       const updatdate= async() => {
+        const washingtonRef = doc(db, "cities",auth.currentUser.uid);
+      
+      // Set the "capital" field of the city 'DC'
+      await updateDoc(washingtonRef, {
+       birthdate:birthdate,   
+      });
+       }
+       const updateimge= async() => {
+        const washingtonRef = doc(db, "cities",auth.currentUser.uid);
+      
+      // Set the "capital" field of the city 'DC'
+      await updateDoc(washingtonRef, {
+       photo:photo,   
+      });
+       }
+
+       const updatAlldata= async() => {
+        const washingtonRef = doc(db, "users",auth.currentUser.uid);
+      
+      // Set the "capital" field of the city 'DC'
+      await updateDoc(washingtonRef, {
+       photo:photo, 
+       firstname:firstname,
+       lastname:lastname,
+       birthdate:birthdate,
+       phone:phone
+
+      });
+       }
+       
+      
+
 
     const hundleregeister = () => {
         createUserWithEmailAndPassword(auth, email, password)
@@ -85,27 +129,11 @@ export default function Login({ navigation }) {
     const image = require("../assets/SignUp.png");
     return (
         <View style={styles.container}>
-            <ImageBackground source={image} style={styles.Background}>
+          <View>
+          <Text style={styles.titleText}>Update your data </Text>
+          </View>
                 <View style={styles.loginView}>
-                    <View style={styles.inputView}>
-                        <TextInput
-                            style={styles.TextInput}
-                            placeholder="Email"
-                            value={email}
-                            placeholderTextColor="#ababab55"
-                            onChangeText={(email) => setEmail(email)}
-                        />
-                    </View>
-                    <View style={styles.inputView2}>
-                        <TextInput
-                            style={styles.TextInput}
-                            placeholder="Password"
-                            value={password}
-                            placeholderTextColor="#ababab55"
-                            secureTextEntry={true}
-                            onChangeText={(password) => setPassword(password)}
-                        />
-                    </View>
+                   
                     <View style={styles.inputView2}>
                         <TextInput
                             style={styles.TextInput}
@@ -114,7 +142,10 @@ export default function Login({ navigation }) {
                             placeholderTextColor="#ababab55"
                             onChangeText={(firstname) => setName(firstname)}
                         />
+
+                        
                     </View>
+                   
                     <View style={styles.inputView2}>
                         <TextInput
                             style={styles.TextInput}
@@ -153,12 +184,12 @@ export default function Login({ navigation }) {
 
                     
 
-                    <TouchableOpacity style={styles.loginBtn} onPress={hundleregeister}   >
+                    <TouchableOpacity style={styles.loginBtn} onPress={updatAlldata}   >
                         <Text style={styles.loginText}>submit</Text>
                     </TouchableOpacity>
 
                 </View>
-            </ImageBackground>
+        
 
         </View>
     );
@@ -185,7 +216,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: '80%',
         height: '7%',
-        marginTop: '55%',
+        marginTop: '20%',
         marginBottom: "4%",
 
     },
@@ -194,7 +225,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: '80%',
         height: '7%',
-        marginBottom: '4%',
+        marginBottom: '3%',
 
     },
     TextInput: {
@@ -214,7 +245,7 @@ const styles = StyleSheet.create({
     },
     photoBtn: {
         width: "15%",
-        marginTop: '5%',
+        marginTop: '3%',
         borderRadius: 10,
         height: '5%',
          alignItems: "center",
@@ -224,6 +255,11 @@ const styles = StyleSheet.create({
 
     loginText: {
         color: 'white',
+        fontWeight: 'bold',
+
+    },
+    titleText: {
+        color: '#ED7014',
         fontWeight: 'bold',
 
     },

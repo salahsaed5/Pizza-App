@@ -73,7 +73,7 @@ export default function Login({ navigation }) {
     const updatePhoto = async () => {
         const uri = await pickImage();
         console.log(uri);
-        const filename = firstname;
+        const filename = email;
         const ref = firebase.storage().ref().child("images/" + filename);
 
         const response = await fetch(uri);
