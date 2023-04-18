@@ -16,7 +16,7 @@ export default function Profaile({ navigation }) {
     const [birthdate, setbrithdate] = useState('');
     const [photo, setphoto] = useState(null);
     const[users,setusers] = useState([]);
-    const image = require("../assets/Myprofile without Buttons.png");
+    const image = require("../assets/profile.png");
     const handelsignout =() => {
   
 
@@ -125,6 +125,10 @@ const styles = StyleSheet.create({
       borderRadius:100,
       height:100,
       width:100,
+      marginLeft:"40%",
+      marginTop:"-8%",
+
+
 
   },
 });

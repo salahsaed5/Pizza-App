@@ -260,16 +260,19 @@ const styles = StyleSheet.create({
         backgroundColor: "#ED7014",
     },
     photoView: {
-        marginTop: '20%',
+        marginTop: '25%',
+        marginBottom: '-3%',
+
         backgroundColor: '#85858629',
         borderRadius: 50,
         width: '30%',
         height: '15%',
     },
     photo: {
-        borderRadius: 50,
+        borderRadius: 100,
         width: '100%',
         height: '100%',
+        
     },
     photoBtn: {
         width: "80%",
