@@ -11,64 +11,64 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 const Home = ({ navigation }) => {
     const [currentSelected, setCurrentSelected] = useState([0]);
 
-const renderCategories = ({ item, index }) => {
-return (
-<TouchableOpacity
-    activeOpacity={0.9}
-    onPress={() => setCurrentSelected(index)}>
-    <View
-        style={{
-            width: 120,
-            height: 180,
-            justifyContent: 'space-evenly',
-            alignItems: 'center',
-            backgroundColor:
-                currentSelected == index ? '#FFC231' : '#ffffff',
-            borderRadius: 20,
-            margin: 10,
-            elevation: 5,
-        }}>
-        <View style={{ width: 60, height: 60 }}>
-            <Image
-                source={item.image}
-                style={{
-                    width: '100%',
-                    height: '100%',
-                    resizeMode: 'center',
-                }}
-            />
-        </View>
-        <Text
-            style={{
-                fontSize: 16,
-                color: '#000000',
-                fontWeight: '600',
-            }}>
-            {item.name}
-        </Text>
+    const renderCategories = ({ item, index }) => {
+        return (
+            <TouchableOpacity
+                activeOpacity={0.9}
+                onPress={() => setCurrentSelected(index)}>
+                <View
+                    style={{
+                        width: 120,
+                        height: 180,
+                        justifyContent: 'space-evenly',
+                        alignItems: 'center',
+                        backgroundColor:
+                            currentSelected == index ? '#FFC231' : '#ffffff',
+                        borderRadius: 20,
+                        margin: 10,
+                        elevation: 5,
+                    }}>
+                    <View style={{ width: 60, height: 60 }}>
+                        <Image
+                            source={item.image}
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                resizeMode: 'center',
+                            }}
+                        />
+                    </View>
+                    <Text
+                        style={{
+                            fontSize: 16,
+                            color: '#000000',
+                            fontWeight: '600',
+                        }}>
+                        {item.name}
+                    </Text>
 
-        <View
-            style={{
-                width: 30,
-                height: 30,
-                borderRadius: 100,
-                backgroundColor:
-                    currentSelected == index ? '#ffffff' : '#FB5D2E',
-                justifyContent: 'center',
-                alignItems: 'center',
-            }}>
-            <FontAwesome
-                name="angle-right"
-                style={{
-                    fontSize: 12,
-                    color: currentSelected == index ? '#000000' : '#ffffff',
-                }}
-            />
-        </View>
-    </View>
-</TouchableOpacity>
-);
-};
+                    <View
+                        style={{
+                            width: 30,
+                            height: 30,
+                            borderRadius: 100,
+                            backgroundColor:
+                                currentSelected == index ? '#ffffff' : '#FB5D2E',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                        }}>
+                        <FontAwesome
+                            name="angle-right"
+                            style={{
+                                fontSize: 12,
+                                color: currentSelected == index ? '#000000' : '#ffffff',
+                            }}
+                        />
+                    </View>
+                </View>
+            </TouchableOpacity>
+        );
+    };
 
 
 

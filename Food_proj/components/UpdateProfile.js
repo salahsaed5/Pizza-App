@@ -1,10 +1,10 @@
-import React, { useState,useEffect } from "react";
-import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, useWindowDimensions,Image,ScrollView } from 'react-native';
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity, useWindowDimensions, Image, ScrollView } from 'react-native';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import {auth , provider,db,storag,firebase } from "../firebase/firebase";
+import { auth, provider, db, storag, firebase } from "../firebase/firebase";
 import * as ImagePicker from 'expo-image-picker';
-import { collection, addDoc,and, onSnapshot} from "firebase/firestore";  
-import { doc, setDoc,getDoc,updateDoc,deleteDoc,getDocs} from "firebase/firestore"; 
+import { collection, addDoc, and, onSnapshot } from "firebase/firestore";
+import { doc, setDoc, getDoc, updateDoc, deleteDoc, getDocs } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 export default function Login({ navigation }) {
@@ -15,7 +15,7 @@ export default function Login({ navigation }) {
     const [phone, setphone] = useState('');
     const [birthdate, setbrithdate] = useState('');
     const [photo, setphoto] = useState(null);
-    const[users,setusers] = useState({});
+    const [users, setusers] = useState({});
 
 
     const pickImage = async () => {
@@ -30,80 +30,80 @@ export default function Login({ navigation }) {
         if (!result.canceled) {
             return result.uri;
         }
-      };
-      const updatePhoto = async () => {
+    };
+    const updatePhoto = async () => {
         const uri = await pickImage();
-      console.log(uri);
-      const filename = email;
-      const ref = firebase.storage().ref().child("images/" + filename);
-      
-      const response = await fetch(uri);
-      const blob = await response.blob();
-      
-      const snapshot = await ref.put(blob);
-      console.log('Image uploaded successfully');
-      
-      const downloadURL = await snapshot.ref.getDownloadURL();
-      setphoto(downloadURL);
-      
-      }
-      //add data to firestore
-      const updatefristname= async() => {
-        const washingtonRef = doc(db, "cities",auth.currentUser.uid);
-      
-      // Set the "capital" field of the city 'DC'
-      await updateDoc(washingtonRef, {
-       firstname:firstname,   
-      });
-       }
-       const updatelastname= async() => {
-        const washingtonRef = doc(db, "cities",auth.currentUser.uid);
-      
-      // Set the "capital" field of the city 'DC'
-      await updateDoc(washingtonRef, {
-       lastname:lastname,   
-      });
-       }
-       const updatephone= async() => {
-        const washingtonRef = doc(db, "cities",auth.currentUser.uid);
-      
-      // Set the "capital" field of the city 'DC'
-      await updateDoc(washingtonRef, {
-       phone:phone,   
-      });
-       }
-       const updatdate= async() => {
-        const washingtonRef = doc(db, "cities",auth.currentUser.uid);
-      
-      // Set the "capital" field of the city 'DC'
-      await updateDoc(washingtonRef, {
-       birthdate:birthdate,   
-      });
-       }
-       const updateimge= async() => {
-        const washingtonRef = doc(db, "cities",auth.currentUser.uid);
-      
-      // Set the "capital" field of the city 'DC'
-      await updateDoc(washingtonRef, {
-       photo:photo,   
-      });
-       }
+        console.log(uri);
+        const filename = email;
+        const ref = firebase.storage().ref().child("images/" + filename);
 
-       const updatAlldata= async() => {
-        const washingtonRef = doc(db, "users",auth.currentUser.uid);
-      
-      // Set the "capital" field of the city 'DC'
-      await updateDoc(washingtonRef, {
-       photo:photo, 
-       firstname:firstname,
-       lastname:lastname,
-       birthdate:birthdate,
-       phone:phone
+        const response = await fetch(uri);
+        const blob = await response.blob();
 
-      });
-       }
-       
-      
+        const snapshot = await ref.put(blob);
+        console.log('Image uploaded successfully');
+
+        const downloadURL = await snapshot.ref.getDownloadURL();
+        setphoto(downloadURL);
+
+    }
+    //add data to firestore
+    const updatefristname = async () => {
+        const washingtonRef = doc(db, "cities", auth.currentUser.uid);
+
+        // Set the "capital" field of the city 'DC'
+        await updateDoc(washingtonRef, {
+            firstname: firstname,
+        });
+    }
+    const updatelastname = async () => {
+        const washingtonRef = doc(db, "cities", auth.currentUser.uid);
+
+        // Set the "capital" field of the city 'DC'
+        await updateDoc(washingtonRef, {
+            lastname: lastname,
+        });
+    }
+    const updatephone = async () => {
+        const washingtonRef = doc(db, "cities", auth.currentUser.uid);
+
+        // Set the "capital" field of the city 'DC'
+        await updateDoc(washingtonRef, {
+            phone: phone,
+        });
+    }
+    const updatdate = async () => {
+        const washingtonRef = doc(db, "cities", auth.currentUser.uid);
+
+        // Set the "capital" field of the city 'DC'
+        await updateDoc(washingtonRef, {
+            birthdate: birthdate,
+        });
+    }
+    const updateimge = async () => {
+        const washingtonRef = doc(db, "cities", auth.currentUser.uid);
+
+        // Set the "capital" field of the city 'DC'
+        await updateDoc(washingtonRef, {
+            photo: photo,
+        });
+    }
+
+    const updatAlldata = async () => {
+        const washingtonRef = doc(db, "users", auth.currentUser.uid);
+
+        // Set the "capital" field of the city 'DC'
+        await updateDoc(washingtonRef, {
+            photo: photo,
+            firstname: firstname,
+            lastname: lastname,
+            birthdate: birthdate,
+            phone: phone
+
+        });
+    }
+
+
 
 
     const hundleregeister = () => {
@@ -129,67 +129,67 @@ export default function Login({ navigation }) {
     const image = require("../assets/SignUp.png");
     return (
         <View style={styles.container}>
-          <View>
-          <Text style={styles.titleText}>Update your data </Text>
-          </View>
-                <View style={styles.loginView}>
-                   
-                    <View style={styles.inputView2}>
-                        <TextInput
-                            style={styles.TextInput}
-                            placeholder="frist name"
-                            value={firstname}
-                            placeholderTextColor="#ababab55"
-                            onChangeText={(firstname) => setName(firstname)}
-                        />
+            <View>
+                <Text style={styles.titleText}>Update your data </Text>
+            </View>
+            <View style={styles.loginView}>
 
-                        
-                    </View>
-                   
-                    <View style={styles.inputView2}>
-                        <TextInput
-                            style={styles.TextInput}
-                            placeholder="last name"
-                            value={lastname}
-                            placeholderTextColor="#ababab55"
-                            onChangeText={(lastname) => setlastName(lastname)}
-                        />
-                    </View>
-                    <View style={styles.inputView2}>
-                        <TextInput
-                            style={styles.TextInput}
-                            placeholder="brith date"
-                            value={birthdate}
-                            placeholderTextColor="#ababab55"
-                            onChangeText={(birthdate) => setbrithdate(birthdate)}
-                        />
-                    </View>
-                    <View style={styles.inputView2}>
+                <View style={styles.inputView2}>
                     <TextInput
-                            style={styles.TextInput}
-                            placeholder="phone"
-                            value={phone}
-                            placeholderTextColor="#ababab55"
-                            onChangeText={(phone) => setphone(phone)}
-                        
-                        />
-                        </View>
-                    {photo && <Image source={{ uri: photo }} style={{ width: '15%', height: '15%' }} />}
-                    
+                        style={styles.TextInput}
+                        placeholder="frist name"
+                        value={firstname}
+                        placeholderTextColor="#ababab55"
+                        onChangeText={(firstname) => setName(firstname)}
+                    />
 
-                    <TouchableOpacity style={styles.photoBtn} onPress={updatePhoto}>
-                        <Text style={styles.loginText}>set photo</Text>
-                    </TouchableOpacity>
-                    
-
-                    
-
-                    <TouchableOpacity style={styles.loginBtn} onPress={updatAlldata}   >
-                        <Text style={styles.loginText}>submit</Text>
-                    </TouchableOpacity>
 
                 </View>
-        
+
+                <View style={styles.inputView2}>
+                    <TextInput
+                        style={styles.TextInput}
+                        placeholder="last name"
+                        value={lastname}
+                        placeholderTextColor="#ababab55"
+                        onChangeText={(lastname) => setlastName(lastname)}
+                    />
+                </View>
+                <View style={styles.inputView2}>
+                    <TextInput
+                        style={styles.TextInput}
+                        placeholder="brith date"
+                        value={birthdate}
+                        placeholderTextColor="#ababab55"
+                        onChangeText={(birthdate) => setbrithdate(birthdate)}
+                    />
+                </View>
+                <View style={styles.inputView2}>
+                    <TextInput
+                        style={styles.TextInput}
+                        placeholder="phone"
+                        value={phone}
+                        placeholderTextColor="#ababab55"
+                        onChangeText={(phone) => setphone(phone)}
+
+                    />
+                </View>
+                {photo && <Image source={{ uri: photo }} style={{ width: '15%', height: '15%' }} />}
+
+
+                <TouchableOpacity style={styles.photoBtn} onPress={updatePhoto}>
+                    <Text style={styles.loginText}>set photo</Text>
+                </TouchableOpacity>
+
+
+
+
+                <TouchableOpacity style={styles.loginBtn} onPress={updatAlldata}   >
+                    <Text style={styles.loginText}>submit</Text>
+                </TouchableOpacity>
+
+            </View>
+
 
         </View>
     );
@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
         marginTop: '3%',
         borderRadius: 10,
         height: '5%',
-         alignItems: "center",
+        alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#ED7014",
     },

@@ -53,7 +53,7 @@ export default function ForgetPassword({ navigation }) {
                         <Text style={styles.text}>Send Link</Text>
                     </TouchableOpacity>
                 </View>
-                
+
 
             </ImageBackground>
         </View>
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#ff8a00",
         borderRadius: 30,
         width: '60%',
-        color:"white",
+        color: "white",
         paddingHorizontal: 15,
         marginLeft: 90,
         top: 30,

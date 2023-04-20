@@ -1,7 +1,7 @@
 
 
 
-  const categories = [
+const categories = [
     {
         name: 'BreakFast',
         image: require('../assets/BreakFast/BreakFast.png'),
@@ -148,7 +148,7 @@
                 size: 'Medium ',
                 crust: 'Small Ice',
                 delivery: 10,
-               
+
 
 
             },
@@ -163,9 +163,9 @@
                 size: 'Large ',
                 crust: 'Large Ice',
                 delivery: 8,
-               
-              },
-              {
+
+            },
+            {
                 name: 'Ice Cream Cone',
                 weight: 150,
                 rating: '4.2',
@@ -175,8 +175,8 @@
                 size: 'Large Glass',
                 crust: 'Small Ice',
                 delivery: 5,
-                
-              },
+
+            },
 
         ],
 
@@ -200,7 +200,7 @@
                 crust: 'Small Ice',
                 delivery: 10,
                 ingredients: [require('../assets/softdrinks/cocacola.png')
-            ],
+                ],
 
 
             },
@@ -216,8 +216,8 @@
                 crust: 'Large Ice',
                 delivery: 8,
                 ingredients: [require('../assets/softdrinks/orange.png')],
-              },
-              {
+            },
+            {
                 name: 'Hot Tea',
                 weight: 30,
                 rating: '4.2',
@@ -228,7 +228,7 @@
                 crust: 'Small Ice',
                 delivery: 5,
                 ingredients: [require('../assets/softdrinks/mango.png')],
-              },
+            },
 
         ],
 

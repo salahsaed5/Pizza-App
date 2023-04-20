@@ -9,19 +9,19 @@ const GetStart = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground source={image} style={styles.Background}>
-         
-         <View style={styles.btnn}>
+
+        <View style={styles.btnn}>
           <TouchableOpacity onPress={() => navigation.navigate('Login')} >
             <Text style={[styles.logginText, { color: "#ED7014" }]}>Skip </Text>
-          </TouchableOpacity></View>     
-       
+          </TouchableOpacity></View>
 
-              <TouchableOpacity onPress={() => navigation.push('GetStart2')} >
+
+        <TouchableOpacity onPress={() => navigation.push('GetStart2')} >
           <ImageBackground source={imagee} style={styles.btn}>
 
 
 
-        
+
 
 
           </ImageBackground>
@@ -62,20 +62,20 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignItems: "flex-end",
     marginLeft: "19%",
-    top:-40,
+    top: -40,
     marginVertical: "150%",
     borderRadius: 55,
-  
+
   },
   btnn: {
     marginLeft: "88%",
     marginVertical: "2%",
-      
+
   },
   CreateBtn: {
     marginLeft: "88%",
     marginVertical: "2%",
-    
+
 
   },
   loginText: {
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   },
 
   logginText: {
-    fontWeight:"bold",
+    fontWeight: "bold",
     color: 'black',
     //  marginHorizontal:"10%",
   },
