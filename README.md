@@ -1,1 +1,1 @@
-# React-native-Project-
+hello reader i wish to have a nice day,,,, this app make user order food fastly by a beatiful process inside app the process dependable in that user order food and admin recive order with details and preAdmin recive
