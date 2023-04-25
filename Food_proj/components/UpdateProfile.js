@@ -7,15 +7,17 @@ import { collection, addDoc, and, onSnapshot } from "firebase/firestore";
 import { doc, setDoc, getDoc, updateDoc, deleteDoc, getDocs } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
-export default function Login({ navigation }) {
+export default function UpdateProfile({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [firstname, setName] = useState('');
-    const [lastname, setlastName] = useState('');
-    const [phone, setphone] = useState('');
-    const [birthdate, setbrithdate] = useState('');
+    const [firstname, setName] = useState("");
+    const [lastname, setlastName] = useState("");
+    const [phone, setphone] = useState("");
+    const [birthdate, setbrithdate] = useState("");
     const [photo, setphoto] = useState(null);
-    const [users, setusers] = useState({});
+    const [users, setusers] = useState([]);
+    
+
 
 
     const pickImage = async () => {
@@ -48,46 +50,26 @@ export default function Login({ navigation }) {
 
     }
     //add data to firestore
-    const updatefristname = async () => {
-        const washingtonRef = doc(db, "cities", auth.currentUser.uid);
-
-        // Set the "capital" field of the city 'DC'
-        await updateDoc(washingtonRef, {
-            firstname: firstname,
-        });
-    }
-    const updatelastname = async () => {
-        const washingtonRef = doc(db, "cities", auth.currentUser.uid);
-
-        // Set the "capital" field of the city 'DC'
-        await updateDoc(washingtonRef, {
-            lastname: lastname,
-        });
-    }
-    const updatephone = async () => {
-        const washingtonRef = doc(db, "cities", auth.currentUser.uid);
-
-        // Set the "capital" field of the city 'DC'
-        await updateDoc(washingtonRef, {
-            phone: phone,
-        });
-    }
-    const updatdate = async () => {
-        const washingtonRef = doc(db, "cities", auth.currentUser.uid);
-
-        // Set the "capital" field of the city 'DC'
-        await updateDoc(washingtonRef, {
-            birthdate: birthdate,
-        });
-    }
-    const updateimge = async () => {
-        const washingtonRef = doc(db, "cities", auth.currentUser.uid);
-
-        // Set the "capital" field of the city 'DC'
-        await updateDoc(washingtonRef, {
-            photo: photo,
-        });
-    }
+    const findData = async () => {
+        const docRef = doc(db, "users", auth.currentUser.uid);
+        const docSnap = await getDoc(docRef);
+        
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setName(data.firstname)
+          setlastName(data.lastname)
+          setbrithdate(data.birthdate)
+          setphone(data.phone)
+          setphoto(data.photo)
+        } else {
+          // docSnap.data() will be undefined in this case
+          console.log("No such document!");
+        }
+        //location.reload()
+      }
+      useEffect(() => {
+        findData();
+      }, []);
 
     const updatAlldata = async () => {
         const washingtonRef = doc(db, "users", auth.currentUser.uid);
@@ -101,30 +83,14 @@ export default function Login({ navigation }) {
             phone: phone
 
         });
+        
+        
     }
 
 
 
 
-    const hundleregeister = () => {
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                alert('SignUp done');
-                navigation.navigate('Profaile');
-                add();
-
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(error.message);
-                // ..
-            });
-    }
-
+    
     const { height } = useWindowDimensions();
     const image = require("../assets/SignUp.png");
     return (

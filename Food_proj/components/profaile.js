@@ -44,6 +44,7 @@ export default function Profaile({ navigation }) {
       // docSnap.data() will be undefined in this case
       console.log("No such document!");
     }
+    //location.reload()
   }
   useEffect(() => {
     findData();
@@ -56,6 +57,7 @@ export default function Profaile({ navigation }) {
     <View style={styles.container}>
       <ImageBackground source={image} style={styles.Background}>
         {users.map((user) => (
+        
           <View key={user.birthdate}>
             <Text>{user.firstname}</Text>
             <Text>{user.lastname}</Text>
