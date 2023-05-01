@@ -83,7 +83,7 @@ export default function UpdateProfile({ navigation }) {
             phone: phone
 
         });
-        
+        navigation.navigate('Home');
         
     }
 

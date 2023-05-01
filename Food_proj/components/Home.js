@@ -12,6 +12,16 @@ const Home = ({ navigation }) => {
     const [currentSelected, setCurrentSelected] = useState([0]);
 
     const renderCategories = ({ item, index }) => {
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         return (
             <TouchableOpacity
                 activeOpacity={0.9}
