@@ -195,7 +195,7 @@ export default function Login({ navigation }) {
                         <Text style={styles.loginText}>set photo</Text>
                     </TouchableOpacity> */}
                     <TouchableOpacity style={styles.loginBtn} onPress={hundelsumbit}   >
-                        <Text style={styles.loginText}>submit</Text>
+                        <Text style={styles.loginText}>Submit</Text>
                     </TouchableOpacity>
 
                     
@@ -203,8 +203,8 @@ export default function Login({ navigation }) {
     </View>
     
     <View style={styles.btnn}>
-                       <TouchableOpacity  onPress={updatePhoto} >
-                          <Text style={[styles.loginText22, { color: "#ED7014" }]}> set photo </Text>
+                       <TouchableOpacity   onPress={updatePhoto} >
+                          <Text style={[styles.loginText22]}>Set Photo </Text>
                         </TouchableOpacity>
                    </View>
 
@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
 
     },
     loginBtn: {
-        width: "80%",
+        width: "60%",
         marginTop: '2%',
         marginBottom: '8%',
         borderRadius: 10,
@@ -262,19 +262,33 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         backgroundColor: "#ED7014",
     },
+    loginBtn2: {
+        width: "40%",
+        marginTop: '-8%',
+        marginBottom: '8%',
+        marginLeft: "-7%",
+
+        borderRadius: 1000,
+        height: '15%',
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#ED7014",
+    },
     photoView: {
         marginTop: '25%',
-        marginBottom: '1%',
-
+        marginBottom: '5%',
+        borderRadius: 500,
         backgroundColor: '#85858629',
         borderRadius: 50,
-        width: '30%',
-        height: '15%',
+        width: '25%',
+        height: '14%',
     },
     photo: {
         borderRadius: 100,
         width: '100%',
         height: '100%',
+
+
 
     },
     photoBtn: {
@@ -292,9 +306,13 @@ const styles = StyleSheet.create({
 
     },
     loginText22: {
-        color: 'white',
+        color: '#ED7014',
         fontWeight: 'bold',
-        fontSize: 11,
+        fontSize: 15,
+        marginTop: '-8%',
+        marginBottom: '5%',
+        marginLeft: "-4%",
+        
  
     },
       btnn: {
@@ -302,6 +320,7 @@ const styles = StyleSheet.create({
         marginRight:"10%",
         marginVertical: "2%",
         marginTop: "-121%",
+        
     
       },
         
