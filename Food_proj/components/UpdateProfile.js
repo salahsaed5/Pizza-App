@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
 
     },
     loginBtn: {
-        width: "80%",
+        width: "70%",
         marginTop: '5%',
         marginBottom: '8%',
         borderRadius: 10,
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#ED7014",
     },
     photoBtn: {
-        width: "15%",
+        width: "20%",
         marginTop: '3%',
         borderRadius: 10,
         height: '5%',
@@ -225,8 +225,11 @@ const styles = StyleSheet.create({
 
     },
     titleText: {
+        marginTop: '5%',
+        marginBottom: '10%',
         color: '#ED7014',
         fontWeight: 'bold',
+        fontSize: 20,
 
     },
 });

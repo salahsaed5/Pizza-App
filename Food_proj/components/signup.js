@@ -151,6 +151,10 @@ export default function Login({ navigation }) {
                     </View>
                     {passwordError ? <Text style={styles.error}>{passwordError}</Text> : null}
                     <View style={styles.inputView2}>
+                      
+
+                   
+
                         <TextInput
                             style={styles.TextInput}
                             placeholder="frist name"
@@ -190,21 +194,22 @@ export default function Login({ navigation }) {
 
                         />
                     </View>
-
-
-
-                    <TouchableOpacity style={styles.photoBtn} onPress={updatePhoto}>
+                    {/* <TouchableOpacity style={styles.photoBtn} onPress={updatePhoto}>
                         <Text style={styles.loginText}>set photo</Text>
-                    </TouchableOpacity>
-
-
-
-
+                    </TouchableOpacity> */}
                     <TouchableOpacity style={styles.loginBtn} onPress={hundelsumbit}   >
                         <Text style={styles.loginText}>submit</Text>
                     </TouchableOpacity>
 
-                </View>
+                    
+
+    </View>
+    <View style={styles.btnn}>
+                       <TouchableOpacity  onPress={updatePhoto} >
+                          <Text style={[styles.loginText22, { color: "#ED7014" }]}> set photo </Text>
+                        </TouchableOpacity>
+                   </View>
+
             </ImageBackground>
 
         </View>
@@ -288,6 +293,20 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
 
     },
+    loginText22: {
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: 11,
+ 
+    },
+      btnn: {
+        marginLeft: "44%",
+        marginRight:"10%",
+        marginVertical: "2%",
+        marginTop: "-120%",
+    
+      },
+        
     error: {},
 });
 

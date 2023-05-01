@@ -54,27 +54,31 @@ export default function Profaile({ navigation }) {
   }
 
   return (
+    
     <View style={styles.container}>
-      <ImageBackground source={image} style={styles.Background}>
         {users.map((user) => (
-        
+         
           <View key={user.birthdate}>
-            <Text>{user.firstname}</Text>
-            <Text>{user.lastname}</Text>
-            <Text>{user.birthdate}</Text>
-            <Text>{user.phone}</Text>
-            <Image source={{ uri: user.photo }} style={styles.iimger} />
+            <Text style={styles.loginText}>Profile</Text>
 
+            <Image source={{ uri: user.photo }} style={styles.iimger} />
+            <Text style={styles.loginText4}>{user.firstname}{user.lastname}</Text>
+            <Text style={styles.loginText3}>{user.email}</Text>
+            
           </View>
 
         ))}
+
+
+
         <TouchableOpacity style={styles.loginBtn} onPress={handelsignout} >
           <Text style={styles.loginText2}>logout</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.loginBtn} onPress={handelUpdate} >
-          <Text style={styles.loginText2}>UpdateProfile</Text>
-        </TouchableOpacity>
-      </ImageBackground>
+        <View style={styles.btnn}>
+        <TouchableOpacity  onPress={handelUpdate} >
+          <Text style={[styles.loginText22, { color: "#ED7014" }]}> Edit </Text>
+        </TouchableOpacity></View>
+
 
     </View>
   );
@@ -100,9 +104,9 @@ const styles = StyleSheet.create({
 
   loginBtn: {
     width: "80%",
-    marginTop: '10%',
+    marginTop: '50%',
     marginBottom: '8%',
-    marginLeft: "10%",
+    marginLeft: "4%",
     borderRadius: 10,
     height: '5%',
     alignItems: "center",
@@ -110,27 +114,67 @@ const styles = StyleSheet.create({
     backgroundColor: "#ED7014",
   },
 
+  loginBtn2: {
+    width: "80%",
+    marginTop: "12%",
+    marginBottom: "10%",
+    marginLeft: "4%",
+    borderRadius: 10,
+    height: '5%',
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#ED7014",
+  },
+
+
   loginText: {
-    marginTop: '20%',
-    marginLeft: "25%",
+    marginTop: "2%",
+    marginLeft: "18%",
     color: 'black',
     fontWeight: 'bold',
-    fontSize: 24,
+    fontSize: 25,
 
   },
+
   loginText2: {
     color: 'white',
     fontWeight: 'bold',
+  },
+  
+  loginText22: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  loginText3: {
+    marginTop: "1%",
+    marginLeft: "6%",
+    color: 'gray',
+    fontWeight: 'bold',
+    fontSize: 15,
 
   },
+  loginText4: {
+    marginTop: "2%",
+    marginLeft: "20%",
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 16,
+
+  },
+
   iimger: {
-    borderRadius: 100,
-    height: 100,
-    width: 100,
-    marginLeft: "40%",
-    marginTop: "-8%",
-
-
+    borderRadius: 120,
+    height: 115,
+    width: 115,
+    marginLeft: "14%",
+    marginTop: "4%",
 
   },
+  btnn: {
+    marginLeft: "88%",
+    marginVertical: "2%",
+    marginTop: "-116%",
+
+  },
+
 });
