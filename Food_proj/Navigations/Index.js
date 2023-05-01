@@ -3,16 +3,16 @@ import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Login from '../components/Login';
-import GetStart from '../components/GetStart';
-import GetStart2 from '../components/GetStart2';
-import GetStart3 from '../components/GetStart3';
-import signup from '../components/signup'
-import ForgetPassword from '../components/ForgetPassword';
-import Profaile from '../components/profaile';
-import Home from '../components/Home';
-import UpdateProfile from '../components/UpdateProfile';
-import BottomNavigator from '../compo/BottomNavigator';
+import Login from '../Screens/Login';
+import GetStart from '../Screens/GetStart';
+import GetStart2 from '../Screens/GetStart2';
+import GetStart3 from '../Screens/GetStart3';
+import signup from '../Screens/signup'
+import ForgetPassword from '../Screens/ForgetPassword';
+import Profaile from '../Screens/profaile';
+import Home from '../Screens/Home';
+import UpdateProfile from '../Screens/UpdateProfile';
+import BottomNavigator from '../BottomNavigationas/BottomNavigator';
 
 const Stack = createNativeStackNavigator();
 

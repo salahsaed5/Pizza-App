@@ -1,8 +1,8 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import Home from '../components/Home';
-import Profaile from '../components/profaile';
+import Home from '../Screens/Home';
+import Profaile from '../Screens/profaile';
 
 
 
