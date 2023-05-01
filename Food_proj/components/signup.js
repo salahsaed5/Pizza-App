@@ -129,6 +129,7 @@ export default function Login({ navigation }) {
                     <View style={styles.photoView}>
                         {photo && <Image source={{ uri: photo }} style={styles.photo} />}
                     </View>
+
                     <View style={styles.inputView}>
                         <TextInput
                             style={styles.TextInput}
@@ -151,10 +152,6 @@ export default function Login({ navigation }) {
                     </View>
                     {passwordError ? <Text style={styles.error}>{passwordError}</Text> : null}
                     <View style={styles.inputView2}>
-                      
-
-                   
-
                         <TextInput
                             style={styles.TextInput}
                             placeholder="frist name"
@@ -204,6 +201,7 @@ export default function Login({ navigation }) {
                     
 
     </View>
+    
     <View style={styles.btnn}>
                        <TouchableOpacity  onPress={updatePhoto} >
                           <Text style={[styles.loginText22, { color: "#ED7014" }]}> set photo </Text>
@@ -266,7 +264,7 @@ const styles = StyleSheet.create({
     },
     photoView: {
         marginTop: '25%',
-        marginBottom: '-3%',
+        marginBottom: '1%',
 
         backgroundColor: '#85858629',
         borderRadius: 50,
@@ -303,7 +301,7 @@ const styles = StyleSheet.create({
         marginLeft: "44%",
         marginRight:"10%",
         marginVertical: "2%",
-        marginTop: "-120%",
+        marginTop: "-121%",
     
       },
         
