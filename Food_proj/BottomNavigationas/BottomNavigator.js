@@ -13,7 +13,7 @@ const BottomNavigator = () => {
         <Tab.Navigator
             tabBarOptions={{
                 style: {
-                    height: 55,
+                    height:90,
                     borderTopWidth: 0,
                     elevation: 0,
                 },

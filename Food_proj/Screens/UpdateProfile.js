@@ -16,7 +16,7 @@ export default function UpdateProfile({ navigation }) {
     const [birthdate, setbrithdate] = useState("");
     const [photo, setphoto] = useState(null);
     const [users, setusers] = useState([]);
-    
+
 
 
 
@@ -53,23 +53,23 @@ export default function UpdateProfile({ navigation }) {
     const findData = async () => {
         const docRef = doc(db, "users", auth.currentUser.uid);
         const docSnap = await getDoc(docRef);
-        
+
         if (docSnap.exists()) {
-          const data = docSnap.data();
-          setName(data.firstname)
-          setlastName(data.lastname)
-          setbrithdate(data.birthdate)
-          setphone(data.phone)
-          setphoto(data.photo)
+            const data = docSnap.data();
+            setName(data.firstname)
+            setlastName(data.lastname)
+            setbrithdate(data.birthdate)
+            setphone(data.phone)
+            setphoto(data.photo)
         } else {
-          // docSnap.data() will be undefined in this case
-          console.log("No such document!");
+            // docSnap.data() will be undefined in this case
+            console.log("No such document!");
         }
         //location.reload()
-      }
-      useEffect(() => {
+    }
+    useEffect(() => {
         findData();
-      }, []);
+    }, []);
 
     const updatAlldata = async () => {
         const washingtonRef = doc(db, "users", auth.currentUser.uid);
@@ -84,19 +84,19 @@ export default function UpdateProfile({ navigation }) {
 
         });
         navigation.navigate('Home');
-        
+
     }
 
 
 
 
-    
+
     const { height } = useWindowDimensions();
     const image = require("../assets/SignUp.png");
     return (
         <View style={styles.container}>
             <View>
-                <Text style={styles.titleText}>Update your data </Text>
+                <Text style={styles.titleText}>Update Your Data </Text>
             </View>
             <View style={styles.loginView}>
 
@@ -140,11 +140,13 @@ export default function UpdateProfile({ navigation }) {
 
                     />
                 </View>
-                {photo && <Image source={{ uri: photo }} style={{ width: '15%', height: '15%' }} />}
+                
+                
+                {photo && <Image source={{ uri: photo }} style={styles.photo} />}
 
 
-                <TouchableOpacity style={styles.photoBtn} onPress={updatePhoto}>
-                    <Text style={styles.loginText}>set photo</Text>
+                <TouchableOpacity onPress={updatePhoto}>
+                    <Text style={styles.loginText1}>Change</Text>
                 </TouchableOpacity>
 
 
@@ -165,6 +167,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
+        backgroundColor: '#ffffff',
+
     },
     Background: {
 
@@ -176,6 +180,8 @@ const styles = StyleSheet.create({
     loginView: {
         alignItems: 'center',
         width: '100%',
+        height: '100%',
+
     },
     inputView: {
         backgroundColor: '#85858629',
@@ -200,8 +206,8 @@ const styles = StyleSheet.create({
 
     },
     loginBtn: {
-        width: "70%",
-        marginTop: '5%',
+        width: "60%",
+        marginTop: '2%',
         marginBottom: '8%',
         borderRadius: 10,
         height: '5%',
@@ -224,12 +230,32 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
 
     },
+    loginText1: {
+        color: '#ED7014',
+        fontWeight: 'bold',
+        fontSize: 15,
+        marginTop: '-100%',
+        marginBottom: '5%',
+        marginLeft: "-4%",
+
+    },
     titleText: {
         marginTop: '5%',
-        marginBottom: '10%',
+        marginBottom: '40%',
         color: '#ED7014',
         fontWeight: 'bold',
         fontSize: 20,
+
+    },
+    photo: {
+        marginBottom: '5%',
+       // marginVertical: '-50%',
+
+        borderRadius: 500,
+        borderRadius: 50,
+        width: '25%',
+        height: '14%',
+
 
     },
 });

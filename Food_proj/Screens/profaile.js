@@ -6,6 +6,8 @@ import { auth, provider, db } from "../firebase/firebase";
 import * as ImagePicker from 'expo-image-picker';
 import { collection, addDoc, and, onSnapshot } from "firebase/firestore";
 import { doc, setDoc, getDoc, updateDoc, deleteDoc, getDocs } from "firebase/firestore";
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 
 export default function Profaile({ navigation }) {
   const [email, setEmail] = useState('');
@@ -54,28 +56,41 @@ export default function Profaile({ navigation }) {
   }
 
   return (
-    
+
     <View style={styles.container}>
-        {users.map((user) => (
-         
-          <View key={user.birthdate}>
-            <Text style={styles.loginText}>Profile</Text>
+      {users.map((user) => (
 
-            <Image source={{ uri: user.photo }} style={styles.iimger} />
-            <Text style={styles.loginText4}>{user.firstname}{user.lastname}</Text>
-            <Text style={styles.loginText3}>{user.email}</Text>
-            
+        <View key={user.birthdate}>
+
+          <Image source={{ uri: user.photo }} style={styles.iimger} />
+          <Text style={styles.loginText4}>{user.firstname}{user.lastname}</Text>
+    
+
+          <View style={styles.loginText3}>
+            <Text>{user.email}</Text>
+
           </View>
+          <View style={styles.Phone}>
+            <Text>{user.phone}</Text>
 
-        ))}
+          </View>
+          <View style={styles.Birhdate}>
+            <Text>{user.birthdate}</Text>
+
+          </View>
+        </View>
+
+
+      ))}
 
 
 
-        <TouchableOpacity style={styles.loginBtn} onPress={handelsignout} >
-          <Text style={styles.loginText2}>logout</Text>
-        </TouchableOpacity>
-        <View style={styles.btnn}>
-        <TouchableOpacity  onPress={handelUpdate} >
+      <TouchableOpacity style={styles.loginBtn} onPress={handelsignout} >
+        <Text style={styles.loginText2}>SignOut</Text>
+      </TouchableOpacity>
+
+      <View style={styles.btnn}>
+        <TouchableOpacity onPress={handelUpdate} >
           <Text style={[styles.loginText22, { color: "#ED7014" }]}> Edit </Text>
         </TouchableOpacity></View>
 
@@ -88,6 +103,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    backgroundColor: '#ffffff',
+
   },
   Background: {
 
@@ -103,8 +120,8 @@ const styles = StyleSheet.create({
 
 
   loginBtn: {
-    width: "80%",
-    marginTop: '50%',
+    width: "50%",
+    marginTop: '30%',
     marginBottom: '8%',
     marginLeft: "4%",
     borderRadius: 10,
@@ -129,10 +146,14 @@ const styles = StyleSheet.create({
 
   loginText: {
     marginTop: "2%",
-    marginLeft: "18%",
+    marginBottom: "3%",
+    justifyContent: "center",
+    marginLeft: "11%",
     color: 'black',
+    alignItems: "center",
+
     fontWeight: 'bold',
-    fontSize: 25,
+    fontSize: 2,
 
   },
 
@@ -140,40 +161,60 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
   },
-  
+
   loginText22: {
-    color: 'white',
     fontWeight: 'bold',
+    fontSize: 17
+
+
   },
   loginText3: {
     marginTop: "1%",
-    marginLeft: "6%",
+    marginLeft: "7%",
     color: 'gray',
     fontWeight: 'bold',
     fontSize: 15,
 
   },
   loginText4: {
-    marginTop: "2%",
-    marginLeft: "20%",
+    marginTop: "4%",
+    marginLeft: "15%",
     color: 'black',
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 20,
 
   },
 
   iimger: {
-    borderRadius: 120,
-    height: 115,
-    width: 115,
+    borderRadius: 1000,
+    height: 100,
+    width: 100,
     marginLeft: "14%",
     marginTop: "4%",
 
   },
   btnn: {
-    marginLeft: "88%",
+
+    marginLeft: "85%",
     marginVertical: "2%",
-    marginTop: "-116%",
+    marginTop: "-108%",
+
+
+  },
+  Phone: {
+    marginTop: "8%",
+    marginLeft: "-15%",
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 20,
+
+  },
+  Birhdate: {
+    marginTop: "4%",
+    marginLeft: "-15%",
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 20,
 
   },
 
