@@ -46,7 +46,7 @@ export default function Login({ navigation }) {
         if (password.trim() === "") {
             setPasswordError("Please enter your Password");
             isValid = false;
-        } else if (!/\S+@\S+\.\S+/.test(email)) {
+        } else if (password.trim().length < 6) {
             setPasswordError("Password must be at least 6 Chracter");
             isValid = false;
         }
@@ -174,8 +174,9 @@ export default function Login({ navigation }) {
                     <View style={styles.inputView2}>
                         <TextInput
                             style={styles.TextInput}
-                            placeholder="brith date"
+                            placeholder="YY-MM-DD"
                             value={birthdate}
+                            keyboardType="numeric"
                             placeholderTextColor="#ababab55"
                             onChangeText={(birthdate) => setbrithdate(birthdate)}
                         />
@@ -198,15 +199,15 @@ export default function Login({ navigation }) {
                         <Text style={styles.loginText}>Submit</Text>
                     </TouchableOpacity>
 
-                    
 
-    </View>
-    
-    <View style={styles.btnn}>
-                       <TouchableOpacity   onPress={updatePhoto} >
-                          <Text style={[styles.loginText22]}>Set Photo </Text>
-                        </TouchableOpacity>
-                   </View>
+
+                </View>
+
+                <View style={styles.btnn}>
+                    <TouchableOpacity onPress={updatePhoto} >
+                        <Text style={[styles.loginText22]}>Set Photo </Text>
+                    </TouchableOpacity>
+                </View>
 
             </ImageBackground>
 
@@ -312,18 +313,18 @@ const styles = StyleSheet.create({
         marginTop: '-8%',
         marginBottom: '5%',
         marginLeft: "-4%",
-        
- 
+
+
     },
-      btnn: {
+    btnn: {
         marginLeft: "44%",
-        marginRight:"10%",
+        marginRight: "10%",
         marginVertical: "2%",
         marginTop: "-121%",
-        
-    
-      },
-        
+
+
+    },
+
     error: {},
 });
 

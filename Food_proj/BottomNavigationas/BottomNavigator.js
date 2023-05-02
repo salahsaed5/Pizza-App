@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Home from '../Screens/Home';
 import Profaile from '../Screens/profaile';
 
@@ -13,7 +13,7 @@ const BottomNavigator = () => {
         <Tab.Navigator
             tabBarOptions={{
                 style: {
-                    height:90,
+                    height: 90,
                     borderTopWidth: 0,
                     elevation: 0,
                 },
@@ -26,7 +26,7 @@ const BottomNavigator = () => {
                 component={Home}
                 options={{
                     tabBarIcon: ({ color }) => (
-                        <Icon name="home-filled" color={color} size={28} />
+                        <Icon name="home" color={color} size={28} />
                     ),
                 }}
             />
@@ -35,9 +35,10 @@ const BottomNavigator = () => {
             <Tab.Screen
                 name="Profaile"
                 component={Profaile}
+                tabBarLabel='Profaile'
                 options={{
                     tabBarIcon: ({ color }) => (
-                        <Icon name="Profaile" color={color} size={28} />
+                        <Icon name="account" color={color} size={28} />
                     ),
                 }}
             />

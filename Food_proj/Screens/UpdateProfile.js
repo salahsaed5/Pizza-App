@@ -83,13 +83,9 @@ export default function UpdateProfile({ navigation }) {
             phone: phone
 
         });
-        navigation.navigate('Home');
+        navigation.navigate('Profaile');
 
     }
-
-
-
-
 
     const { height } = useWindowDimensions();
     const image = require("../assets/SignUp.png");
@@ -99,6 +95,8 @@ export default function UpdateProfile({ navigation }) {
                 <Text style={styles.titleText}>Update Your Data </Text>
             </View>
             <View style={styles.loginView}>
+
+                {photo && <Image source={{ uri: photo }} style={styles.photo} />}
 
                 <View style={styles.inputView2}>
                     <TextInput
@@ -124,9 +122,10 @@ export default function UpdateProfile({ navigation }) {
                 <View style={styles.inputView2}>
                     <TextInput
                         style={styles.TextInput}
-                        placeholder="brith date"
+                        placeholder="YY-MM-DD"
                         value={birthdate}
                         placeholderTextColor="#ababab55"
+                        keyboardType="numeric"
                         onChangeText={(birthdate) => setbrithdate(birthdate)}
                     />
                 </View>
@@ -136,13 +135,13 @@ export default function UpdateProfile({ navigation }) {
                         placeholder="phone"
                         value={phone}
                         placeholderTextColor="#ababab55"
+                        keyboardType="numeric"
                         onChangeText={(phone) => setphone(phone)}
 
                     />
                 </View>
-                
-                
-                {photo && <Image source={{ uri: photo }} style={styles.photo} />}
+
+
 
 
                 <TouchableOpacity onPress={updatePhoto}>
@@ -234,23 +233,23 @@ const styles = StyleSheet.create({
         color: '#ED7014',
         fontWeight: 'bold',
         fontSize: 15,
-        marginTop: '-100%',
+        marginTop: '-70%',
         marginBottom: '5%',
         marginLeft: "-4%",
 
     },
     titleText: {
         marginTop: '5%',
-        marginBottom: '40%',
+        marginBottom: '10%',
         color: '#ED7014',
         fontWeight: 'bold',
         fontSize: 20,
 
     },
     photo: {
-        marginBottom: '5%',
-       // marginVertical: '-50%',
-
+        marginBottom: '12%',
+        // marginVertical: '-50%',
+        marginRight: '2%',
         borderRadius: 500,
         borderRadius: 50,
         width: '25%',

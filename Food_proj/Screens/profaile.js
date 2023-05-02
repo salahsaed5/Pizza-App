@@ -64,7 +64,7 @@ export default function Profaile({ navigation }) {
 
           <Image source={{ uri: user.photo }} style={styles.iimger} />
           <Text style={styles.loginText4}>{user.firstname}{user.lastname}</Text>
-    
+
 
           <View style={styles.loginText3}>
             <Text>{user.email}</Text>
@@ -84,15 +84,16 @@ export default function Profaile({ navigation }) {
       ))}
 
 
-
-      <TouchableOpacity style={styles.loginBtn} onPress={handelsignout} >
-        <Text style={styles.loginText2}>SignOut</Text>
-      </TouchableOpacity>
-
+      <View style={styles.loginBtn}>
+        <TouchableOpacity onPress={handelsignout} >
+          <Text style={[styles.loginText2, { color: "#ED7014" }]}>SignOut</Text>
+        </TouchableOpacity>
+      </View>
       <View style={styles.btnn}>
         <TouchableOpacity onPress={handelUpdate} >
           <Text style={[styles.loginText22, { color: "#ED7014" }]}> Edit </Text>
-        </TouchableOpacity></View>
+        </TouchableOpacity>
+      </View>
 
 
     </View>
@@ -120,15 +121,15 @@ const styles = StyleSheet.create({
 
 
   loginBtn: {
-    width: "50%",
-    marginTop: '30%',
+    // width: "25%",
+    marginTop: '-65%',
     marginBottom: '8%',
-    marginLeft: "4%",
+    marginRight: "78%",
     borderRadius: 10,
     height: '5%',
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#ED7014",
+    // backgroundColor: "#ED7014",
   },
 
   loginBtn2: {
@@ -160,17 +161,16 @@ const styles = StyleSheet.create({
   loginText2: {
     color: 'white',
     fontWeight: 'bold',
+    fontSize: 17
   },
 
   loginText22: {
     fontWeight: 'bold',
     fontSize: 17
-
-
   },
   loginText3: {
-    marginTop: "1%",
-    marginLeft: "7%",
+    marginTop: "5%",
+    marginLeft: "5%",
     color: 'gray',
     fontWeight: 'bold',
     fontSize: 15,
@@ -186,10 +186,10 @@ const styles = StyleSheet.create({
   },
 
   iimger: {
-    borderRadius: 1000,
-    height: 100,
+    borderRadius: 100,
+    height: '30%',
     width: 100,
-    marginLeft: "14%",
+    marginLeft: "12%",
     marginTop: "4%",
 
   },
@@ -197,13 +197,13 @@ const styles = StyleSheet.create({
 
     marginLeft: "85%",
     marginVertical: "2%",
-    marginTop: "-108%",
+    marginTop: "-14%",
 
 
   },
   Phone: {
-    marginTop: "8%",
-    marginLeft: "-15%",
+    marginTop: "4%",
+    marginLeft: "13%",
     color: 'black',
     fontWeight: 'bold',
     fontSize: 20,
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
   },
   Birhdate: {
     marginTop: "4%",
-    marginLeft: "-15%",
+    marginLeft: "15%",
     color: 'black',
     fontWeight: 'bold',
     fontSize: 20,

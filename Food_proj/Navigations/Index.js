@@ -21,7 +21,6 @@ const Index = () => {
   return (
     <NavigationContainer>
       <SafeAreaView style={styles.root}>
-
         <Stack.Navigator >
           <Stack.Screen name="GetStart" component={GetStart} />
           <Stack.Screen name="GetStart2" component={GetStart2} />
@@ -30,11 +29,8 @@ const Index = () => {
           <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
           <Stack.Screen name="signup" component={signup} />
           <Stack.Screen name="Profaile" component={Profaile} />
-          <Stack.Screen name="Home" component={Home} /> 
-          <Stack.Screen name="UpdateProfile" component={UpdateProfile} /> 
-          <Stack.Screen name="BottomNavigator" component={BottomNavigator} /> 
-
-
+          <Stack.Screen name="Home" component={BottomNavigator} />
+          <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
         </Stack.Navigator>
       </SafeAreaView>
     </NavigationContainer>
