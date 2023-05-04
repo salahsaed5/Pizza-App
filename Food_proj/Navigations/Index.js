@@ -12,6 +12,7 @@ import ForgetPassword from '../Screens/ForgetPassword';
 import Profaile from '../Screens/profaile';
 import Home from '../Screens/Home';
 import UpdateProfile from '../Screens/UpdateProfile';
+import Admin from '../Screens/Admin';
 import BottomNavigator from '../BottomNavigationas/BottomNavigator';
 
 const Stack = createNativeStackNavigator();
@@ -31,6 +32,7 @@ const Index = () => {
           <Stack.Screen name="Profaile" component={Profaile} />
           <Stack.Screen name="Home" component={BottomNavigator} />
           <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
+          <Stack.Screen name="Admin" component={Admin} />
         </Stack.Navigator>
       </SafeAreaView>
     </NavigationContainer>
