@@ -59,6 +59,7 @@ export default function UpdateProfile({ navigation }) {
             photo: photo
 
         });
+        navigation.navigate('Home');
     }
 
     const updatAlldata = async () => {
