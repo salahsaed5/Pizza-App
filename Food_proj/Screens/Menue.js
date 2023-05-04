@@ -1,6 +1,5 @@
 
 
-
 const categories = [
     {
         name: 'BreakFast',

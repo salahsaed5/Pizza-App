@@ -15,7 +15,8 @@ export default function UpdateProfile({ navigation }) {
     const [price, setprice] = useState("");
     const [photo, setphoto] = useState(null);
     const [users, setusers] = useState([]);
-
+    const [item, setitem ] = useState("");
+    
 
 
 
@@ -50,7 +51,7 @@ export default function UpdateProfile({ navigation }) {
     }
     //add data to firestore
     const add = async () => {
-        await setDoc(doc(db, "pizza", name), {
+        await setDoc(doc(db, item, name), {
             name: name ,
             size : size ,
             weight : weight ,
@@ -76,7 +77,18 @@ export default function UpdateProfile({ navigation }) {
             <View style={styles.loginView}>
 
                 {photo && <Image source={{ uri: photo }} style={styles.photo} />}
+                
+                <View style={styles.inputView2}>
+                    <TextInput
+                        style={styles.TextInput}
+                        placeholder="item"
+                        value={item}
+                        placeholderTextColor="#ababab55"
+                        onChangeText={(item) => setitem(item)}
+                    />
 
+
+                </View>
                 <View style={styles.inputView2}>
                     <TextInput
                         style={styles.TextInput}
