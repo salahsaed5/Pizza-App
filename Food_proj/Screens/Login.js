@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     },
     CreateBtn: {
         marginLeft: "45%",
-        marginVertical: "-0.7%",
+        marginVertical: "-1.2%",
 
     },
     loginText: {

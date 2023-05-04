@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     fontSize: 17
   },
   loginText3: {
-    marginTop: "5%",
+    marginTop: "2%",
     marginLeft: "5%",
     color: 'gray',
     fontWeight: 'bold',
@@ -177,8 +177,8 @@ const styles = StyleSheet.create({
 
   },
   loginText4: {
-    marginTop: "4%",
-    marginLeft: "15%",
+    marginTop: "2%",
+    marginLeft: "11%",
     color: 'black',
     fontWeight: 'bold',
     fontSize: 20,
@@ -186,18 +186,18 @@ const styles = StyleSheet.create({
   },
 
   iimger: {
-    borderRadius: 100,
-    height: '30%',
-    width: 100,
-    marginLeft: "12%",
+    borderRadius: 1000,
+    height: 120,
+    width: 120,
+    marginLeft: "8%",
     marginTop: "4%",
 
   },
   btnn: {
 
-    marginLeft: "85%",
+    marginLeft: "80%",
     marginVertical: "2%",
-    marginTop: "-14%",
+    marginTop: "-15%",
 
 
   },
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
 
   },
   Birhdate: {
-    marginTop: "4%",
+    marginTop: "5%",
     marginLeft: "15%",
     color: 'black',
     fontWeight: 'bold',
