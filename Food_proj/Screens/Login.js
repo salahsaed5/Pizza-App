@@ -12,13 +12,14 @@ export default function Login({ navigation }) {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                if (!/\S+@admin+\.\S+/.test(email)) {
-                    alert('Login done');
-                    navigation.navigate('Home');
-                }
-                else if (!/\S+@\S+\.\S+/.test(email)) {
+                if (/\S+@admin+\.\S+/.test(email)) {
                     alert('Wellcome sir!');
                     navigation.navigate('Admin');
+
+                }
+                else if (/\S+@\S+\.\S+/.test(email)) {
+                    alert('Login done');
+                    navigation.navigate('Home');
                 }
             })
             .catch((error) => {
