@@ -16,12 +16,12 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 
 
-const Home = ({ navigation }) => {
+const HomeTwo = ({ navigation }) => {
     const [data,setdata]=useState([]);
 
 
         const Read = async() => {
-          const querySnapshot = await getDocs(collection(db,"pizza"));
+          const querySnapshot = await getDocs(collection(db,"breakfast"));
           let dat = [];
           querySnapshot.forEach((doc) => {
             dat.push({
@@ -38,8 +38,6 @@ const Home = ({ navigation }) => {
         },[]);
 
    
-
-
 
 
 
@@ -68,7 +66,9 @@ const Home = ({ navigation }) => {
 
                     <Text style={styles.Categories} > Categories</Text>
                 <View style={{flexDirection:"row"}}>
-               < TouchableOpacity
+               < TouchableOpacity onPress={ () => {
+                    navigation.navigate('Home')
+                } }
                 activeOpacity={0.9}
                 >
                 <View
@@ -77,7 +77,7 @@ const Home = ({ navigation }) => {
                         height: 180,
                         justifyContent: 'space-evenly',
                         alignItems: 'center',
-                        backgroundColor:'#FB5D2E',
+                      
                       
                         borderRadius: 20,
                         margin: 10,
@@ -108,7 +108,8 @@ const Home = ({ navigation }) => {
                             height: 30,
                             borderRadius: 100,
                             backgroundColor:
-                                '#FB5D2E',
+                            '#FB5D2E',
+                           
                             justifyContent: 'center',
                             alignItems: 'center',
                         }}>
@@ -123,9 +124,7 @@ const Home = ({ navigation }) => {
                 </View>
             </TouchableOpacity>
            < TouchableOpacity
-                activeOpacity={0.9} onPress={ () => {
-                    navigation.navigate('HomeTwo')
-                } }
+                activeOpacity={0.9}
                 >
                 <View
                     style={{
@@ -133,6 +132,8 @@ const Home = ({ navigation }) => {
                         height: 180,
                         justifyContent: 'space-evenly',
                         alignItems: 'center',
+                        backgroundColor:
+                        '#FB5D2E',
                       
                         borderRadius: 20,
                         margin: 10,
@@ -178,7 +179,7 @@ const Home = ({ navigation }) => {
                 </View>
             </TouchableOpacity>
             <TouchableOpacity
-                activeOpacity={0.9}  onPress={ () => {
+                activeOpacity={0.9} onPress={ () => {
                     navigation.navigate('HomeThree')}}
                 >
                 <View
@@ -434,4 +435,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default Home;
+export default HomeTwo;

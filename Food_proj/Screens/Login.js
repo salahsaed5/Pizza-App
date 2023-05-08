@@ -14,7 +14,7 @@ export default function Login({ navigation }) {
                 const user = userCredential.user;
                 // navigation.navigate('Home');
                 alert('Login done');
-                navigation.navigate('Admin');
+                navigation.navigate('Home');
             })
             .catch((error) => {
                 const errorCode = error.code;

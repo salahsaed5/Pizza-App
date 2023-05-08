@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import React from 'react';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from '../Screens/Login';
@@ -11,6 +12,8 @@ import signup from '../Screens/signup'
 import ForgetPassword from '../Screens/ForgetPassword';
 import Profaile from '../Screens/profaile';
 import Home from '../Screens/Home';
+import HomeTwo from '../Screens/HomeTwo';
+import HomeThree from '../Screens/HomeThree';
 import UpdateProfile from '../Screens/UpdateProfile';
 import Admin from '../Screens/Admin';
 import BottomNavigator from '../BottomNavigationas/BottomNavigator';
@@ -31,6 +34,8 @@ const Index = () => {
           <Stack.Screen name="signup" component={signup} />
           <Stack.Screen name="Profaile" component={Profaile} />
           <Stack.Screen name="Home" component={BottomNavigator} />
+          <Stack.Screen name="HomeTwo" component={HomeTwo} />
+          <Stack.Screen name="HomeThree" component={HomeThree} />
           <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
           <Stack.Screen name="Admin" component={Admin} />
         </Stack.Navigator>
