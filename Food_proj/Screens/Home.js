@@ -6,25 +6,18 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome5';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import BottomNavigator from '../BottomNavigationas/BottomNavigator';
-
+import Breakfast from "../assets/BreakFast/McFalafel.png";
 
 
 const Home = ({ navigation }) => {
     const [currentSelected, setCurrentSelected] = useState([0]);
 
     const renderCategories = ({ item, index }) => {
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
         return (
-            
+
             <TouchableOpacity
                 activeOpacity={0.9}
                 onPress={() => setCurrentSelected(index)}>
@@ -84,119 +77,6 @@ const Home = ({ navigation }) => {
 
 
 
-    const renderItems = (data, index) => {
-        return (
-            <TouchableOpacity
-                key={index}
-                activeOpacity={0.9}
-                style={{
-                    width: '100%',
-                    height: 180,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-                onPress={() =>
-                    navigation.push('Profaile', {
-                        name: data.name,
-                        price: data.price,
-                        image: data.image,
-                        size: data.size,
-                        crust: data.crust,
-                        delivery: data.delivery,
-                        ingredients: data.ingredients,
-                        navigation: navigation,
-                    })
-                }>
-                <View
-                    style={{
-                        width: '90%',
-                        height: 160,
-                        backgroundColor: '#ffffff',
-                        borderRadius: 20,
-                        elevation: 4,
-                        position: 'relative',
-                        padding: 15,
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                    }}>
-                    <View style={{ marginBottom: 50 }}>
-
-                        <Text
-                            style={{
-                                fontSize: 22,
-                                color: '#000000',
-                                fontWeight: 'bold',
-                                paddingTop: 10,
-                            }}>
-                            {data.name}
-                        </Text>
-                        <Text
-                            style={{
-                                fontSize: 12,
-                                color: '#000000',
-                                opacity: 0.5,
-                            }}>
-                            {data.weight}
-                        </Text>
-                    </View>
-                    <View style={{ width: 150, height: 150, marginRight: -45 }}>
-                        <Image
-                            source={data.image}
-                            style={{
-                                width: '100%',
-                                height: '100%',
-                                resizeMode: 'contain',
-                            }}
-                        />
-                    </View>
-                    <View
-                        style={{
-                            position: 'absolute',
-                            bottom: 0,
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                        }}>
-                        <View
-                            style={{
-                                width: 85,
-                                height: 50,
-                                backgroundColor: '#FFC231',
-                                borderTopRightRadius: 20,
-                                borderBottomLeftRadius: 20,
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                            }}>
-                            <Entypo
-                                name="plus"
-                                style={{ fontSize: 18, color: '#000000' }}
-                            />
-                        </View>
-                        <View
-                            style={{
-                                flexDirection: 'row',
-                                alignItems: 'center',
-                                marginLeft: 20,
-                            }}>
-                            <AntDesign
-                                name="star"
-                                style={{ fontSize: 12, color: '#000000', paddingRight: 5 }}
-                            />
-                            <Text
-                                style={{
-                                    fontSize: 15,
-                                    color: '#000000',
-                                    fontWeight: 'bold',
-                                }}>
-                                {data.rating}
-                            </Text>
-                        </View>
-                    </View>
-                </View>
-            </TouchableOpacity>
-        );
-    };
-
 
 
 
@@ -229,7 +109,38 @@ const Home = ({ navigation }) => {
                     />
                     <Text style={styles.Popular} > Popular </Text>
 
-                    {categories[currentSelected].items.map(renderItems)}
+
+                    <TouchableOpacity style={styles.TOuchopacityy} >
+                        <View style={styles.Label}>
+                            <View style={{ marginBottom: 50 }}>
+
+                                <Text style={styles.NameItem}> Diseeel </Text>
+
+                                <Text style={styles.WeightiTems}> 122 </Text>
+                            </View>
+
+
+                            <View style={{ width: 150, height: 150, marginRight: -45 }}>
+                                <Image source={Breakfast} style={styles.ImageItems} />
+                            </View>
+
+                            <View style={styles.ArrangeItems}>
+                                <View style={styles.PlusColor}>
+                                    <Entypo
+                                        name="plus"
+                                        style={{ fontSize: 18, color: '#000000' }}
+                                    />
+                                </View>
+                                <View style={styles.StarPosition}>
+                                    <AntDesign
+                                        name="star"
+                                        style={{ fontSize: 12, color: '#000000', paddingRight: 5 }}
+                                    />
+                                    <Text style={styles.StarText}> 4.5 </Text>
+                                </View>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
 
                     <TouchableOpacity style={styles.TouchLoadMore} >
                         <Text style={styles.LoadMore} >  Load more </Text>
@@ -311,8 +222,84 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         opacity: 0.5,
     },
-
-
+    Label: {
+        width: '90%',
+        height: 160,
+        backgroundColor: '#ffffff',
+        borderRadius: 20,
+        elevation: 4,
+        position: 'relative',
+        padding: 15,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    PLus: {
+        position: 'absolute',
+        bottom: 0,
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: 85,
+        height: 50,
+        backgroundColor: '#FFC231',
+        borderTopRightRadius: 20,
+        borderBottomLeftRadius: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    NameItem: {
+        fontSize: 22,
+        color: '#000000',
+        fontWeight: 'bold',
+        paddingTop: 5,
+    },
+    ImageItems: {
+        width: '100%',
+        height: '100%',
+        resizeMode: 'contain',
+    },
+    RateItem: {
+        margin: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        opacity: 0.5,
+    },
+    TouchLoadMore: {
+        margin: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        opacity: 0.5,
+    },
+    WeightiTems: {
+        fontSize: 12,
+        color: '#000000',
+        opacity: 0.5,
+    },
+    ArrangeItems: {
+        position: 'absolute',
+        bottom: 0,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    PlusColor: {
+        width: 85,
+        height: 50,
+        backgroundColor: '#FFC231',
+        borderTopRightRadius: 20,
+        borderBottomLeftRadius: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    StarPosition: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginLeft: 20,
+    },
+    StarText: {
+        fontSize: 15,
+        color: '#000000',
+        fontWeight: 'bold',
+    },
 
 });
 
