@@ -12,9 +12,14 @@ export default function Login({ navigation }) {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                // navigation.navigate('Home');
-                alert('Login done');
-                navigation.navigate('Home');
+                if (!/\S+@admin+\.\S+/.test(email)) {
+                    alert('Login done');
+                    navigation.navigate('Home');
+                }
+                else if (!/\S+@\S+\.\S+/.test(email)) {
+                    alert('Wellcome sir!');
+                    navigation.navigate('Admin');
+                }
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -33,7 +38,7 @@ export default function Login({ navigation }) {
                 console.log(user.email)
                 console.log(user.displayName)
 
-                navigation.navigate('Profaile');
+                navigation.navigate('Home');
                 // IdP data available using getAdditionalUserInfo(result)
                 // ...
             }).catch((error) => {
