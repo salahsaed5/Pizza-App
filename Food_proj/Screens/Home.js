@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, TextInput, FlatList } from 'react-native';
 import categories from './Menue';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -17,27 +17,27 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 
 const Home = ({ navigation }) => {
-    const [data,setdata]=useState([]);
+    const [data, setdata] = useState([]);
 
 
-        const Read = async() => {
-          const querySnapshot = await getDocs(collection(db,"pizza"));
-          let dat = [];
-          querySnapshot.forEach((doc) => {
+    const Read = async () => {
+        const querySnapshot = await getDocs(collection(db, "pizza"));
+        let dat = [];
+        querySnapshot.forEach((doc) => {
             dat.push({
-              id: doc.id,
-              
-              ...doc.data()
-            });
-          });
-          setdata(dat);
-        };
-        
-        useEffect(() => {
-          Read();
-        },[]);
+                id: doc.id,
 
-   
+                ...doc.data()
+            });
+        });
+        setdata(dat);
+    };
+
+    useEffect(() => {
+        Read();
+    }, []);
+
+
 
 
 
@@ -50,7 +50,7 @@ const Home = ({ navigation }) => {
         <View style={styles.container}>
 
             <ScrollView showsVerticalScrollIndicator={false}>
-                
+
                 <View style={styles.ViewScroll} >
                     <View style={{ padding: 20 }}>
                         <Text style={styles.pizza}>   PIZZA </Text>
@@ -67,212 +67,213 @@ const Home = ({ navigation }) => {
 
 
                     <Text style={styles.Categories} > Categories</Text>
-                <View style={{flexDirection:"row"}}>
-               < TouchableOpacity
-                activeOpacity={0.9} >
-                <View
-                    style={{
-                        width: 120,
-                        height: 180,
-                        justifyContent: 'space-evenly',
-                        alignItems: 'center',
-                        backgroundColor:'#FFC231',
-                      
-                        borderRadius: 20,
-                        margin: 10,
-                        elevation: 5,
-                    }}>
-                    <View style={{ width: 60, height: 60 }}>
-                        <Image
-                            source={Breakfast}
-                            style={{
-                                width: '100%',
-                                height: '100%',
-                                resizeMode: 'center',
-                            }}
-                        />
-                    </View>
-                    <Text
-                        style={{
-                            fontSize: 16,
-                            color: '#000000',
-                            fontWeight: '600',
-                        }}>
-                        Pizza
-                    </Text>
+                    <View style={{ flexDirection: "row" }}>
+                        < TouchableOpacity
+                            activeOpacity={0.9} >
+                            <View
+                                style={{
+                                    width: 120,
+                                    height: 180,
+                                    justifyContent: 'space-evenly',
+                                    alignItems: 'center',
+                                    backgroundColor: '#FFC231',
 
-                    <View
-                        style={{
-                            width: 30,
-                            height: 30,
-                            borderRadius: 100,
-                            backgroundColor:
-                            '#FB5D2E',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}>
-                        <FontAwesome
-                            name="angle-right"
-                            style={{
-                                fontSize: 12,
-                                color:  '#ffffff',
-                            }}
-                        />
-                    </View>
-                </View>
-            </TouchableOpacity>
-           < TouchableOpacity
-                activeOpacity={0.9} onPress={ () => {
-                    navigation.navigate('HomeTwo')
-                } }
-                >
-                <View
-                    style={{
-                        width: 120,
-                        height: 180,
-                        justifyContent: 'space-evenly',
-                        alignItems: 'center',
-                        backgroundColor:'#ffffff',
-                        borderRadius: 20,
-                        margin: 10,
-                        elevation: 5,
-                    }}>
-                    <View style={{ width: 60, height: 60 }}>
-                        <Image
-                            source={Breakfast}
-                            style={{
-                                width: '100%',
-                                height: '100%',
-                                resizeMode: 'center',
-                            }}
-                        />
-                    </View>
-                    <Text
-                        style={{
-                            fontSize: 16,
-                            color: '#000000',
-                            fontWeight: '600',
-                        }}>
-                        BreakFast
-                    </Text>
+                                    borderRadius: 20,
+                                    margin: 10,
+                                    elevation: 5,
+                                }}>
+                                <View style={{ width: 60, height: 60 }}>
+                                    <Image
+                                        source={Breakfast}
+                                        style={{
+                                            width: '100%',
+                                            height: '100%',
+                                            resizeMode: 'center',
+                                        }}
+                                    />
+                                </View>
+                                <Text
+                                    style={{
+                                        fontSize: 16,
+                                        color: '#000000',
+                                        fontWeight: '600',
+                                    }}>
+                                    Pizza
+                                </Text>
 
-                    <View
-                        style={{
-                            width: 30,
-                            height: 30,
-                            borderRadius: 100,
-                            backgroundColor:
-                            '#FB5D2E',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}>
-                        <FontAwesome
-                            name="angle-right"
-                            style={{
-                                fontSize: 12,
-                                color:  '#ffffff',
+                                <View
+                                    style={{
+                                        width: 30,
+                                        height: 30,
+                                        borderRadius: 100,
+                                        backgroundColor:
+                                            '#FB5D2E',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                    }}>
+                                    <FontAwesome
+                                        name="angle-right"
+                                        style={{
+                                            fontSize: 12,
+                                            color: '#ffffff',
+                                        }}
+                                    />
+                                </View>
+                            </View>
+                        </TouchableOpacity>
+                        < TouchableOpacity
+                            activeOpacity={0.9} onPress={() => {
+                                navigation.navigate('HomeTwo')
                             }}
-                        />
-                    </View>
-                </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-                activeOpacity={0.9}  onPress={ () => {
-                    navigation.navigate('HomeThree')}}
-                >
-                <View
-                    style={{
-                        width: 120,
-                        height: 180,
-                        justifyContent: 'space-evenly',
-                        alignItems: 'center',
-                        backgroundColor:'#ffffff',
+                        >
+                            <View
+                                style={{
+                                    width: 120,
+                                    height: 180,
+                                    justifyContent: 'space-evenly',
+                                    alignItems: 'center',
+                                    backgroundColor: '#ffffff',
+                                    borderRadius: 20,
+                                    margin: 10,
+                                    elevation: 5,
+                                }}>
+                                <View style={{ width: 60, height: 60 }}>
+                                    <Image
+                                        source={Breakfast}
+                                        style={{
+                                            width: '100%',
+                                            height: '100%',
+                                            resizeMode: 'center',
+                                        }}
+                                    />
+                                </View>
+                                <Text
+                                    style={{
+                                        fontSize: 16,
+                                        color: '#000000',
+                                        fontWeight: '600',
+                                    }}>
+                                    BreakFast
+                                </Text>
 
-                        borderRadius: 20,
-                        margin: 10,
-                        elevation: 5,
-                    }}>
-                    <View style={{ width: 60, height: 60 }}>
-                        <Image
-                            source={Breakfast}
-                            style={{
-                                width: '100%',
-                                height: '100%',
-                                resizeMode: 'center',
+                                <View
+                                    style={{
+                                        width: 30,
+                                        height: 30,
+                                        borderRadius: 100,
+                                        backgroundColor:
+                                            '#FB5D2E',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                    }}>
+                                    <FontAwesome
+                                        name="angle-right"
+                                        style={{
+                                            fontSize: 12,
+                                            color: '#ffffff',
+                                        }}
+                                    />
+                                </View>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            activeOpacity={0.9} onPress={() => {
+                                navigation.navigate('HomeThree')
                             }}
-                        />
-                    </View>
-                    <Text
-                        style={{
-                            fontSize: 16,
-                            color: '#000000',
-                            fontWeight: '600',
-                        }}>
-                        softdrinks
-                    </Text>
+                        >
+                            <View
+                                style={{
+                                    width: 120,
+                                    height: 180,
+                                    justifyContent: 'space-evenly',
+                                    alignItems: 'center',
+                                    backgroundColor: '#ffffff',
 
-                    <View
-                        style={{
-                            width: 30,
-                            height: 30,
-                            borderRadius: 100,
-                            backgroundColor:
-                                '#FB5D2E',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}>
-                        <FontAwesome
-                            name="angle-right"
-                            style={{
-                                fontSize: 12,
-                                color:  '#ffffff',
-                            }}
-                        />
+                                    borderRadius: 20,
+                                    margin: 10,
+                                    elevation: 5,
+                                }}>
+                                <View style={{ width: 60, height: 60 }}>
+                                    <Image
+                                        source={Breakfast}
+                                        style={{
+                                            width: '100%',
+                                            height: '100%',
+                                            resizeMode: 'center',
+                                        }}
+                                    />
+                                </View>
+                                <Text
+                                    style={{
+                                        fontSize: 16,
+                                        color: '#000000',
+                                        fontWeight: '600',
+                                    }}>
+                                    Softdrinks
+                                </Text>
+
+                                <View
+                                    style={{
+                                        width: 30,
+                                        height: 30,
+                                        borderRadius: 100,
+                                        backgroundColor:
+                                            '#FB5D2E',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                    }}>
+                                    <FontAwesome
+                                        name="angle-right"
+                                        style={{
+                                            fontSize: 12,
+                                            color: '#ffffff',
+                                        }}
+                                    />
+                                </View>
+                            </View>
+                        </TouchableOpacity>
                     </View>
-                </View>
-            </TouchableOpacity>
-                </View>
-                
+
                     <Text style={styles.Popular} > Popular </Text>
                     {data.map((user) => (
-                          <TouchableOpacity style={styles.TOuchopacityy} >
-                          <View style={styles.Label}>
-                              <View style={{ marginBottom: 50 }}>
-  
-                                  <Text style={styles.NameItem}> {user.name} </Text>
-  
-                                  <Text style={styles.WeightiTems}>{user.weight} </Text>
-                              </View>
-  
-  
-                              <View style={{ width: 150, height: 150, marginRight: -45 }}>
-                                  <Image source={user.photo} style={styles.ImageItems} />
-                              </View>
-  
-                              <View style={styles.ArrangeItems}>
-                                  <View style={styles.PlusColor}>
-                                      <Entypo
-                                          name="plus"
-                                          style={{ fontSize: 18, color: '#000000' }}
-                                      />
-                                  </View>
-                                  <View style={styles.StarPosition}>
-                                      <AntDesign
-                                          name="star"
-                                          style={{ fontSize: 12, color: '#000000', paddingRight: 5 }}
-                                      />
-                                      <Text style={styles.StarText}> 4.5 </Text>
-                                  </View>
-                              </View>
-                          </View>
-                      </TouchableOpacity>
-  
-     
-      
-    ))}
+                        <TouchableOpacity style={styles.TOuchopacityy} >
+                            <View style={styles.Label}>
+                                <View style={{ marginBottom: 50 }}>
+
+                                    <Text style={styles.NameItem}> {user.name} </Text>
+
+                                    <Text style={styles.WeightiTems}>{user.weight} </Text>
+                                </View>
 
 
-                  
+                                <View style={{ width: 150, height: 150, marginRight: -45 }}>
+                                    <Image source={user.photo} style={styles.ImageItems} />
+                                </View>
+
+                                <View style={styles.ArrangeItems}>
+                                    <View style={styles.PlusColor}>
+                                        <Entypo
+                                            name="plus"
+                                            style={{ fontSize: 18, color: '#000000' }}
+                                        />
+                                    </View>
+                                    <View style={styles.StarPosition}>
+                                        <AntDesign
+                                            name="star"
+                                            style={{ fontSize: 12, color: '#000000', paddingRight: 5 }}
+                                        />
+                                        <Text style={styles.StarText}> 4.5 </Text>
+                                    </View>
+                                </View>
+                            </View>
+                        </TouchableOpacity>
+
+
+
+                    ))}
+
+
+
                     <TouchableOpacity style={styles.TouchLoadMore} >
                         <Text style={styles.LoadMore} >  Load more </Text>
                     </TouchableOpacity>
@@ -437,7 +438,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
- 
+
 });
 
 export default Home;

@@ -8,15 +8,15 @@ import { doc, setDoc, getDoc, updateDoc, deleteDoc, getDocs } from "firebase/fir
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 export default function UpdateProfile({ navigation }) {
-   
+
     const [name, setname] = useState("");
     const [size, setsize] = useState("");
     const [weight, setweight] = useState("");
     const [price, setprice] = useState("");
     const [photo, setphoto] = useState(null);
     const [users, setusers] = useState([]);
-    const [item, setitem ] = useState("");
-    
+    const [item, setitem] = useState("");
+
 
 
 
@@ -52,10 +52,10 @@ export default function UpdateProfile({ navigation }) {
     //add data to firestore
     const add = async () => {
         await setDoc(doc(db, item, name), {
-            name: name ,
-            size : size ,
-            weight : weight ,
-            price : price ,
+            name: name,
+            size: size,
+            weight: weight,
+            price: price,
             photo: photo
 
         });
@@ -63,7 +63,7 @@ export default function UpdateProfile({ navigation }) {
     }
 
     const updatAlldata = async () => {
-        
+
         navigation.navigate('Profaile');
 
     }
@@ -78,7 +78,7 @@ export default function UpdateProfile({ navigation }) {
             <View style={styles.loginView}>
 
                 {photo && <Image source={{ uri: photo }} style={styles.photo} />}
-                
+
                 <View style={styles.inputView2}>
                     <TextInput
                         style={styles.TextInput}
@@ -137,14 +137,14 @@ export default function UpdateProfile({ navigation }) {
 
 
                 <TouchableOpacity onPress={updatePhoto}>
-                    <Text style={styles.loginText1}>Change</Text>
+                    <Text style={styles.loginText1}>Put Photo</Text>
                 </TouchableOpacity>
 
 
 
 
                 <TouchableOpacity style={styles.loginBtn} onPress={add}   >
-                    <Text style={styles.loginText}>submit</Text>
+                    <Text style={styles.loginText}>Submit</Text>
                 </TouchableOpacity>
 
             </View>

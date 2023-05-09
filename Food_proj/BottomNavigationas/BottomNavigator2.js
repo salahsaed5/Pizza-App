@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Home from '../Screens/Home';
+import HomeTwo from '../Screens/HomeTwo';
 import Profaile from '../Screens/profaile';
 import DetailsScreen from '../Screens/DetailsScreen';
 
@@ -10,7 +10,7 @@ import DetailsScreen from '../Screens/DetailsScreen';
 
 const Tab = createBottomTabNavigator();
 
-const BottomNavigator = () => {
+const BottomNavigator2 = () => {
     return (
         <Tab.Navigator
             tabBarOptions={{
@@ -25,7 +25,7 @@ const BottomNavigator = () => {
 
             <Tab.Screen
                 name="HomeScreen"
-                component={Home}
+                component={HomeTwo}
                 options={{
                     tabBarIcon: ({ color }) => (
                         <Icon name="home" color={color} size={28} />
@@ -57,4 +57,4 @@ const BottomNavigator = () => {
     );
 };
 
-export default BottomNavigator;
+export default BottomNavigator2;
