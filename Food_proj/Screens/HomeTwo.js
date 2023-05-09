@@ -78,7 +78,8 @@ const HomeTwo = ({ navigation }) => {
                         justifyContent: 'space-evenly',
                         alignItems: 'center',
                       
-                      
+                        backgroundColor:'#ffffff',
+
                         borderRadius: 20,
                         margin: 10,
                         elevation: 5,
@@ -133,7 +134,7 @@ const HomeTwo = ({ navigation }) => {
                         justifyContent: 'space-evenly',
                         alignItems: 'center',
                         backgroundColor:
-                        '#FB5D2E',
+                        '#FFC231',
                       
                         borderRadius: 20,
                         margin: 10,
@@ -164,7 +165,7 @@ const HomeTwo = ({ navigation }) => {
                             height: 30,
                             borderRadius: 100,
                             backgroundColor:
-                                '#FB5D2E',
+                               '#FB5D2E',
                             justifyContent: 'center',
                             alignItems: 'center',
                         }}>
@@ -188,7 +189,7 @@ const HomeTwo = ({ navigation }) => {
                         height: 180,
                         justifyContent: 'space-evenly',
                         alignItems: 'center',
-                      
+                        backgroundColor:'#ffffff',
                         borderRadius: 20,
                         margin: 10,
                         elevation: 5,

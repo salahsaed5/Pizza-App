@@ -77,7 +77,8 @@ const HomeThree = ({ navigation }) => {
                         height: 180,
                         justifyContent: 'space-evenly',
                         alignItems: 'center',
-                      
+                        backgroundColor:'#ffffff',
+
                       
                         borderRadius: 20,
                         margin: 10,
@@ -133,7 +134,8 @@ const HomeThree = ({ navigation }) => {
                         height: 180,
                         justifyContent: 'space-evenly',
                         alignItems: 'center',
-                      
+                        backgroundColor:'#ffffff',
+
                       
                         borderRadius: 20,
                         margin: 10,
@@ -188,7 +190,7 @@ const HomeThree = ({ navigation }) => {
                         justifyContent: 'space-evenly',
                         alignItems: 'center',
                         backgroundColor:
-                        '#FB5D2E',
+                        '#FFC231',
                       
                         borderRadius: 20,
                         margin: 10,

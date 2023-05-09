@@ -69,7 +69,62 @@ const Home = ({ navigation }) => {
                     <Text style={styles.Categories} > Categories</Text>
                 <View style={{flexDirection:"row"}}>
                < TouchableOpacity
-                activeOpacity={0.9}
+                activeOpacity={0.9} >
+                <View
+                    style={{
+                        width: 120,
+                        height: 180,
+                        justifyContent: 'space-evenly',
+                        alignItems: 'center',
+                        backgroundColor:'#FFC231',
+                      
+                        borderRadius: 20,
+                        margin: 10,
+                        elevation: 5,
+                    }}>
+                    <View style={{ width: 60, height: 60 }}>
+                        <Image
+                            source={Breakfast}
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                resizeMode: 'center',
+                            }}
+                        />
+                    </View>
+                    <Text
+                        style={{
+                            fontSize: 16,
+                            color: '#000000',
+                            fontWeight: '600',
+                        }}>
+                        Pizza
+                    </Text>
+
+                    <View
+                        style={{
+                            width: 30,
+                            height: 30,
+                            borderRadius: 100,
+                            backgroundColor:
+                            '#FB5D2E',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                        }}>
+                        <FontAwesome
+                            name="angle-right"
+                            style={{
+                                fontSize: 12,
+                                color:  '#ffffff',
+                            }}
+                        />
+                    </View>
+                </View>
+            </TouchableOpacity>
+           < TouchableOpacity
+                activeOpacity={0.9} onPress={ () => {
+                    navigation.navigate('HomeTwo')
+                } }
                 >
                 <View
                     style={{
@@ -77,8 +132,7 @@ const Home = ({ navigation }) => {
                         height: 180,
                         justifyContent: 'space-evenly',
                         alignItems: 'center',
-                        backgroundColor:'#FB5D2E',
-                      
+                        backgroundColor:'#ffffff',
                         borderRadius: 20,
                         margin: 10,
                         elevation: 5,
@@ -108,62 +162,7 @@ const Home = ({ navigation }) => {
                             height: 30,
                             borderRadius: 100,
                             backgroundColor:
-                                '#FB5D2E',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}>
-                        <FontAwesome
-                            name="angle-right"
-                            style={{
-                                fontSize: 12,
-                                color:  '#ffffff',
-                            }}
-                        />
-                    </View>
-                </View>
-            </TouchableOpacity>
-           < TouchableOpacity
-                activeOpacity={0.9} onPress={ () => {
-                    navigation.navigate('HomeTwo')
-                } }
-                >
-                <View
-                    style={{
-                        width: 120,
-                        height: 180,
-                        justifyContent: 'space-evenly',
-                        alignItems: 'center',
-                      
-                        borderRadius: 20,
-                        margin: 10,
-                        elevation: 5,
-                    }}>
-                    <View style={{ width: 60, height: 60 }}>
-                        <Image
-                            source={Breakfast}
-                            style={{
-                                width: '100%',
-                                height: '100%',
-                                resizeMode: 'center',
-                            }}
-                        />
-                    </View>
-                    <Text
-                        style={{
-                            fontSize: 16,
-                            color: '#000000',
-                            fontWeight: '600',
-                        }}>
-                        kkkk
-                    </Text>
-
-                    <View
-                        style={{
-                            width: 30,
-                            height: 30,
-                            borderRadius: 100,
-                            backgroundColor:
-                                '#FB5D2E',
+                            '#FB5D2E',
                             justifyContent: 'center',
                             alignItems: 'center',
                         }}>
@@ -187,7 +186,8 @@ const Home = ({ navigation }) => {
                         height: 180,
                         justifyContent: 'space-evenly',
                         alignItems: 'center',
-                      
+                        backgroundColor:'#ffffff',
+
                         borderRadius: 20,
                         margin: 10,
                         elevation: 5,
@@ -208,7 +208,7 @@ const Home = ({ navigation }) => {
                             color: '#000000',
                             fontWeight: '600',
                         }}>
-                        kkkk
+                        softdrinks
                     </Text>
 
                     <View
@@ -431,7 +431,13 @@ const styles = StyleSheet.create({
         color: '#000000',
         fontWeight: 'bold',
     },
-
+    TOuchopacityy: {
+        width: '100%',
+        height: 180,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+ 
 });
 
 export default Home;

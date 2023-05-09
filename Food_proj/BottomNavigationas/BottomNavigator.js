@@ -3,6 +3,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Home from '../Screens/Home';
 import Profaile from '../Screens/profaile';
+import DetailsScreen from '../Screens/DetailsScreen';
+
 
 
 
@@ -30,7 +32,15 @@ const BottomNavigator = () => {
                     ),
                 }}
             />
-
+ <Tab.Screen
+                name="Details"
+                component={DetailsScreen}
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <Icon name="shopping" color={color} size={28} />
+                    ),
+                }}
+            />
 
             <Tab.Screen
                 name="Profaile"

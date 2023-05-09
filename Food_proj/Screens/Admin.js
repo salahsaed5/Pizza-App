@@ -225,9 +225,9 @@ const styles = StyleSheet.create({
         color: '#ED7014',
         fontWeight: 'bold',
         fontSize: 15,
-        marginTop: '-70%',
+        marginTop: '-85%',
         marginBottom: '5%',
-        marginLeft: "-4%",
+        marginLeft: "-2%",
 
     },
     titleText: {
