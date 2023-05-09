@@ -4,11 +4,14 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Breakfast from "../assets/BreakFast/McFalafel.png";
 
 
-const DetailsScreen = ({navigation}) => {
+const DetailsScreen = ({navigation,route}) => {
  
 
   return (
     <SafeAreaView style={{backgroundColor: '#ffffff'}}>
+    <Text>{route.params.name }</Text>
+    <Text>{route.params.price }</Text>
+    
       <View style={style.header}>
         <Text style={{fontSize: 20, fontWeight: 'bold'}}>Details</Text>
       </View>
@@ -19,7 +22,7 @@ const DetailsScreen = ({navigation}) => {
             alignItems: 'center',
             height: 280,
           }}>
-          <Image source={Breakfast} style={{height: 220, width: 220}} />
+          <Image source={{uri:route.params.image}} style={{height: 220, width: 220}} />
         </View>
         <View style={style.details}>
           <View

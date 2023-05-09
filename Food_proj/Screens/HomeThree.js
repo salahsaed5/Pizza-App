@@ -242,7 +242,13 @@ const HomeThree = ({ navigation }) => {
 
                     <Text style={styles.Popular} > Popular </Text>
                     {data.map((user) => (
-                        <TouchableOpacity style={styles.TOuchopacityy} >
+                        <TouchableOpacity style={styles.TOuchopacityy} onPress={()=> navigation.push('DetailsScreen',{
+                            name:user.name,
+                            price:user.price,
+                            image:user.photo
+                        })
+                            
+                        }  >
                             <View style={styles.Label}>
                                 <View style={{ marginBottom: 50 }}>
 
