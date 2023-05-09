@@ -6,7 +6,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome5';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import BottomNavigator from '../BottomNavigationas/BottomNavigator';
-import Breakfast from "../assets/BreakFast/McFalafel.png";
+import pizza from "../assets/pizza/pizza.png"
+import Breakfast from "../assets/BreakFast/BreakFast.png";
+import softdrinks from "../assets/softdrinks/StrawberryBanana.png";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, provider, db, storag, firebase } from "../firebase/firebase";
 import * as ImagePicker from 'expo-image-picker';
@@ -86,7 +88,7 @@ const HomeTwo = ({ navigation }) => {
                                 }}>
                                 <View style={{ width: 60, height: 60 }}>
                                     <Image
-                                        source={Breakfast}
+                                        source={pizza}
                                         style={{
                                             width: '100%',
                                             height: '100%',
@@ -197,7 +199,7 @@ const HomeTwo = ({ navigation }) => {
                                 }}>
                                 <View style={{ width: 60, height: 60 }}>
                                     <Image
-                                        source={Breakfast}
+                                        source={softdrinks}
                                         style={{
                                             width: '100%',
                                             height: '100%',
@@ -219,8 +221,7 @@ const HomeTwo = ({ navigation }) => {
                                         width: 30,
                                         height: 30,
                                         borderRadius: 100,
-                                        backgroundColor:
-                                            '#FB5D2E',
+                                        backgroundColor: '#FB5D2E',
                                         justifyContent: 'center',
                                         alignItems: 'center',
                                     }}>
@@ -249,7 +250,7 @@ const HomeTwo = ({ navigation }) => {
 
 
                                 <View style={{ width: 150, height: 150, marginRight: -45 }}>
-                                    <Image source={user.photo} style={styles.ImageItems} />
+                                    <Image source={{ uri: user.photo }} style={styles.ImageItems} />
                                 </View>
 
                                 <View style={styles.ArrangeItems}>
@@ -367,6 +368,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+    },
+    TOuchopacityy: {
+        marginTop: "4%",
+        marginBottom: "4%",
+        marginLeft: "5%",
     },
     PLus: {
         position: 'absolute',
