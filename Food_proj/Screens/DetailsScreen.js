@@ -1,19 +1,18 @@
 import React from 'react';
-import {SafeAreaView, ScrollView,StyleSheet,TouchableOpacity, View, Text, Image} from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, View, Text, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Breakfast from "../assets/BreakFast/McFalafel.png";
 
 
-const DetailsScreen = ({navigation,route}) => {
- 
+const DetailsScreen = ({ navigation, route }) => {
+
 
   return (
-    <SafeAreaView style={{backgroundColor: '#ffffff'}}>
-    <Text>{route.params.name }</Text>
-    <Text>{route.params.price }</Text>
-    
+    <SafeAreaView style={{ backgroundColor: '#ffffff' }}>
+      
+
       <View style={style.header}>
-        <Text style={{fontSize: 20, fontWeight: 'bold'}}>Details</Text>
+        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Details</Text>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View
@@ -22,7 +21,7 @@ const DetailsScreen = ({navigation,route}) => {
             alignItems: 'center',
             height: 280,
           }}>
-          <Image source={{uri:route.params.image}} style={{height: 220, width: 220}} />
+          <Image source={{ uri: route.params.image }} style={{ height: 220, width: 220 }} />
         </View>
         <View style={style.details}>
           <View
@@ -32,12 +31,15 @@ const DetailsScreen = ({navigation,route}) => {
               alignItems: 'center',
             }}>
             <Text
-              style={{fontSize: 25, fontWeight: 'bold', color:'#FFF'}}>
-Pizza            </Text>
+              style={{     marginLeft: 150,marginTop : -55 ,
+                fontSize: 25, fontWeight: 'bold', color: '#FFF' }}>
+              Pizza            </Text>
             <View style={style.iconContainer}>
               <Icon name="favorite-border" color='#FFC231' size={25} />
             </View>
           </View>
+          <Text  style={style.NAme} >{route.params.name}</Text>
+      <Text style={style.Price} >{route.params.price}</Text>
           <Text style={style.detailsText}>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
@@ -45,13 +47,13 @@ Pizza            </Text>
             and scrambled it to make a type specimen book. It has survived not
             only five centuries.
           </Text>
-          <View style={{marginTop: 40, marginBottom: 40}}>
+          <View style={{ marginTop: 40, marginBottom: 40 }}>
 
-          <TouchableOpacity activeOpacity={0.8}>
-      <View style={{...style.btnContainer, backgroundColor: '#FFF'}}>
-        <Text style={{...style.title, color: '#F9813A'}}>Add To Cart</Text>
-      </View>
-    </TouchableOpacity>
+            <TouchableOpacity activeOpacity={0.8}>
+              <View style={{ ...style.btnContainer, backgroundColor: '#FFF' }}>
+                <Text style={{ ...style.title, color: '#F9813A' }}>Add To Cart</Text>
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -82,13 +84,24 @@ const style = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 30,
   },
+  NAme: {
+    marginTop: -20,
+    lineHeight: 22,
+    fontSize: 20, fontWeight: 'bold', color: '#FFF'
+  },
+  Price: {
+    marginTop: 8,
+    lineHeight: 22,
+    fontSize: 17, fontWeight: 'bold', color: '#FFF'
+
+  },
   detailsText: {
     marginTop: 10,
     lineHeight: 22,
     fontSize: 16,
     color: '#FFF',
   },
-  title: {color: '#FFF', fontWeight: 'bold', fontSize: 18},
+  title: { color: '#FFF', fontWeight: 'bold', fontSize: 18 },
   btnContainer: {
     backgroundColor: '#F9813A',
     height: 60,
