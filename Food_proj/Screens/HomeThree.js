@@ -20,6 +20,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const HomeThree = ({ navigation }) => {
     const [data, setdata] = useState([]);
+    const [oo, setoo] = useState("");
 
 
     const Read = async () => {
@@ -39,7 +40,14 @@ const HomeThree = ({ navigation }) => {
         Read();
     }, []);
 
-
+    const se = () => {
+        navigation.push('Search',{
+            oo:oo,
+            
+    })
+    setoo("");
+    }
+    
 
 
 
@@ -58,13 +66,21 @@ const HomeThree = ({ navigation }) => {
                     </View>
 
 
-                    <View style={styles.Search} >
-                        <Ionicons
+                   
+                    <View style={styles.Search} > 
+<TouchableOpacity onPress={se}>
+                            <Ionicons
                             name="search"
                             style={{ fontSize: 20, color: '#000000', opacity: 0.8 }} />
-                        <TextInput style={styles.TextSearch} placeholder="Search..." />
+                        </TouchableOpacity>
+                        
+                        <TextInput style={styles.TextSearch} placeholder="Search..."
+                         
+                         value={oo}
+                        
+                         onChangeText={(oo) => setoo(oo)}
+                        />
                     </View>
-
 
                     <Text style={styles.Categories} > Categories</Text>
                     <View style={{ flexDirection: "row" }}>

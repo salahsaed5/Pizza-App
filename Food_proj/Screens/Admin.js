@@ -51,6 +51,14 @@ export default function UpdateProfile({ navigation }) {
     }
     //add data to firestore
     const add = async () => {
+        await setDoc(doc(db, "all", name), {
+            name: name,
+            size: size,
+            weight: weight,
+            price: price,
+            photo: photo
+
+        });
         await setDoc(doc(db, item, name), {
             name: name,
             size: size,

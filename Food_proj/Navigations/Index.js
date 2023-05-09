@@ -20,6 +20,7 @@ import BottomNavigator from '../BottomNavigationas/BottomNavigator';
 import BottomNavigator2 from '../BottomNavigationas/BottomNavigator2';
 import BottomNavigator3 from '../BottomNavigationas/BottomNavigator3';
 import DetailsScreen  from '../Screens/DetailsScreen';
+import Search from '../Screens/Search'
 const Stack = createNativeStackNavigator();
 
 
@@ -41,6 +42,7 @@ const Index = () => {
           <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
           <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
           <Stack.Screen name="Admin" component={Admin} />
+          <Stack.Screen name="Search" component={Search} />
         </Stack.Navigator>
       </SafeAreaView>
     </NavigationContainer>

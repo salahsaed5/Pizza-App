@@ -18,28 +18,32 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 
 
-const HomeTwo = ({ navigation }) => {
+const Search = ({ navigation,route }) => {
     const [data, setdata] = useState([]);
     const [oo, setoo] = useState("");
 
 
     const Read = async () => {
-        const querySnapshot = await getDocs(collection(db, "breakfast"));
+        const docRef = doc(db, "all", route.params.oo);
+        const docSnap = await getDoc(docRef);
         let dat = [];
-        querySnapshot.forEach((doc) => {
-            dat.push({
-                id: doc.id,
+        if (docSnap.exists()) {
+          console.log("Document data:", docSnap.data());
+          dat.push({
+            ...docSnap.data()
+          });
+          setdata(dat)
+        } else {
+          // docSnap.data() will be undefined in this case
+          console.log("No such document!");
+        }
+        //location.reload()
+      }
+      useEffect(() => {
+        Read ();
+      }, []);
 
-                ...doc.data()
-            });
-        });
-        setdata(dat);
-    };
-
-    useEffect(() => {
-        Read();
-    }, []);
-    const se = () => {
+      const se = () => {
         navigation.push('Search',{
             oo:oo,
             
@@ -54,6 +58,7 @@ const HomeTwo = ({ navigation }) => {
 
 
 
+
     return (
         <View style={styles.container}>
 
@@ -61,12 +66,10 @@ const HomeTwo = ({ navigation }) => {
 
                 <View style={styles.ViewScroll} >
                     <View style={{ padding: 20 }}>
-                        <Text style={styles.pizza}>   Breakfast </Text>
+                        <Text style={styles.pizza}>   PIZZA </Text>
                         <Text style={styles.Delivary}> Delivery</Text>
                     </View>
 
-
-                    
                     <View style={styles.Search} > 
 <TouchableOpacity onPress={se}>
                             <Ionicons
@@ -82,21 +85,20 @@ const HomeTwo = ({ navigation }) => {
                         />
                     </View>
 
+
                     <Text style={styles.Categories} > Categories</Text>
                     <View style={{ flexDirection: "row" }}>
                         < TouchableOpacity onPress={() => {
                             navigation.navigate('Home')
                         }}
-                            activeOpacity={0.9}
-                        >
+                            activeOpacity={0.9} >
                             <View
                                 style={{
                                     width: 120,
                                     height: 180,
                                     justifyContent: 'space-evenly',
                                     alignItems: 'center',
-
-                                    backgroundColor: '#ffffff',
+                                   
 
                                     borderRadius: 20,
                                     margin: 10,
@@ -128,7 +130,6 @@ const HomeTwo = ({ navigation }) => {
                                         borderRadius: 100,
                                         backgroundColor:
                                             '#FB5D2E',
-
                                         justifyContent: 'center',
                                         alignItems: 'center',
                                     }}>
@@ -143,7 +144,9 @@ const HomeTwo = ({ navigation }) => {
                             </View>
                         </TouchableOpacity>
                         < TouchableOpacity
-                            activeOpacity={0.9}
+                            activeOpacity={0.9} onPress={() => {
+                                navigation.navigate('HomeTwo')
+                            }}
                         >
                             <View
                                 style={{
@@ -151,9 +154,7 @@ const HomeTwo = ({ navigation }) => {
                                     height: 180,
                                     justifyContent: 'space-evenly',
                                     alignItems: 'center',
-                                    backgroundColor:
-                                        '#FFC231',
-
+                                    backgroundColor: '#ffffff',
                                     borderRadius: 20,
                                     margin: 10,
                                     elevation: 5,
@@ -209,6 +210,7 @@ const HomeTwo = ({ navigation }) => {
                                     justifyContent: 'space-evenly',
                                     alignItems: 'center',
                                     backgroundColor: '#ffffff',
+
                                     borderRadius: 20,
                                     margin: 10,
                                     elevation: 5,
@@ -237,7 +239,8 @@ const HomeTwo = ({ navigation }) => {
                                         width: 30,
                                         height: 30,
                                         borderRadius: 100,
-                                        backgroundColor: '#FB5D2E',
+                                        backgroundColor:
+                                            '#FB5D2E',
                                         justifyContent: 'center',
                                         alignItems: 'center',
                                     }}>
@@ -255,7 +258,7 @@ const HomeTwo = ({ navigation }) => {
 
                     <Text style={styles.Popular} > Popular </Text>
                     {data.map((user) => (
-                        <TouchableOpacity style={styles.TOuchopacityy}  onPress={()=> navigation.push('DetailsScreen',{
+                        <TouchableOpacity style={styles.TOuchopacityy} onPress={()=> navigation.push('DetailsScreen',{
                             name:user.name,
                             price:user.price,
                             image:user.photo
@@ -379,6 +382,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         opacity: 0.5,
     },
+    TOuchopacityy: {
+        marginTop: "4%",
+        marginBottom: "4%",
+    },
     Label: {
         width: '90%',
         height: 160,
@@ -390,11 +397,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-    },
-    TOuchopacityy: {
-        marginTop: "4%",
-        marginBottom: "4%",
-        marginLeft: "5%",
     },
     PLus: {
         position: 'absolute',
@@ -462,7 +464,13 @@ const styles = StyleSheet.create({
         color: '#000000',
         fontWeight: 'bold',
     },
+    TOuchopacityy: {
+        width: '100%',
+        height: 180,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 
 });
 
-export default HomeTwo;
+export default Search;
